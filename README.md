@@ -6,9 +6,11 @@ Q: Do we read a list of regular expressions and make an automata by joining them
 
 R: Read one at a time, but we might, in later stages, read more then one
 
+
 Q: Transforming the automata means changing from DFA to NFA, and so on, right?
 
 R: Yes, yes it does...
+
 
 Q: Is there a way to, with only one program, generate both Java and C code?
 
