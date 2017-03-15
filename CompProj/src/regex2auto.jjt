@@ -1,0 +1,27 @@
+/**
+ * JJTree template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */options{  static = true;}PARSER_BEGIN(reg2auto)
+public class reg2auto { 	public static void main(String args []) {    	reg2auto parser = new reg2auto(System.in);
+    		try {		  SimpleNode n = parser.Start();		  n.dump("");		  System.out.println("Thank you.");		}		catch (Exception e) {		  System.out.println("Error" + e.getMessage());		}	}}PARSER_END(reg2auto)SKIP : {  	" "| 	"\t"| 	"\n"| 	"\r"
+/*| < "//" (~[ "\n", "\r" ])*    (      "\n"    | "\r"    | "\r\n"    ) >| < "/*" (~[ "*" ])* "*"    (      ~[ "/" ] (~[ "*" ])* "*"    )*    "/" >
+*/}TOKEN : {
+  	< BACKSLASH: "\\" >
+| 	< PERIOD: "." >
+| 	< CARAT: "^" >
+| 	< DOLLAR_SIGN: "$" >
+| 	< PIPE: "|" >
+| 	< SQUARE_BRACKET_BEGIN: "[" >
+| 	< SQUARE_BRACKET_END: "]" >
+| 	< PARENTHESIS_BEGIN: "(" >
+| 	< PARENTHESIS_END: ")" >
+| 	< EXCLAMATION_POINT: "!" >
+| 	< QUESTION_MARK: "?" >
+| 	< ASTERISK: "*" >
+| 	< PLUS: "+" >
+| 	< BRACE_BEGIN: "{" >
+| 	< BRACE_END: "}" >
+| 	< LETTER: ["A" - "Z", "a" - "z"] >
+| 	< NUMBER: ["0" - "9"]"*" >
+
+}SimpleNode Start() : {}{	Expression() {		return jjtThis;	}}void Expression() : {}{
+	";"}
