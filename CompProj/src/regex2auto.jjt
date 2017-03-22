@@ -2,9 +2,8 @@
  * JJTree template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
  */options{  static = true;}PARSER_BEGIN(reg2auto)
 public class reg2auto { 	public static void main(String args []) {    	reg2auto parser = new reg2auto(System.in);
-    		try {		  SimpleNode n = parser.Start();		  n.dump("");		  System.out.println("Thank you.");		}		catch (Exception e) {		  System.out.println("Error" + e.getMessage());		}	}}PARSER_END(reg2auto)SKIP : {  	" "| 	"\t"| 	"\n"| 	"\r"
-/*| < "//" (~[ "\n", "\r" ])*    (      "\n"    | "\r"    | "\r\n"    ) >| < "/*" (~[ "*" ])* "*"    (      ~[ "/" ] (~[ "*" ])* "*"    )*    "/" >
-*/}TOKEN : {
+    		try {		  SimpleNode n = parser.Start();		  n.dump("");		}		catch (Exception e) {		  System.out.println("Error" + e.getMessage());		}	}}PARSER_END(reg2auto)SKIP : {  	" "| 	"\t"| 	"\r"
+| 	"\b"}TOKEN : {
   	< BACKSLASH: "\\" >
 | 	< PERIOD: "." >
 | 	< CARAT: "^" >
@@ -20,8 +19,50 @@ public class reg2auto { 	public static void main(String args []) {    	reg2aut
 | 	< PLUS: "+" >
 | 	< BRACE_BEGIN: "{" >
 | 	< BRACE_END: "}" >
-| 	< LETTER: ["A" - "Z", "a" - "z"] >
-| 	< NUMBER: ["0" - "9"]"*" >
+| 	< COMMA: "," >
+| 	< LETTER: ["A" - "z"] >
+| 	< NUMBER: ["0" - "9"] >
+|  	< TERMINATE: "\n" >
 
-}SimpleNode Start() : {}{	Expression() {		return jjtThis;	}}void Expression() : {}{
-	";"}
+}SimpleNode Start() : {}{	Expression() 
+  	< TERMINATE > {		return jjtThis;	}}void Expression() : {}{
+ 	ExpressionType() (Expression())?}
+
+void ExpressionType() : {}
+{
+	Terminal()			(Qualifier())?
+| 	ParenthesisExp()	(Qualifier())?
+}
+
+void ParenthesisExp() : {}
+{
+	< PARENTHESIS_BEGIN >
+		Expression()
+	< PARENTHESIS_END >
+}
+
+void Qualifier() : {}
+{
+	< QUESTION_MARK >
+| 	< ASTERISK >
+| 	< PLUS >
+| 	ComplexQualifier()
+}
+
+void ComplexQualifier() : {}
+{
+	< BRACE_BEGIN >
+		(	( < NUMBER > ( < COMMA > ( < NUMBER > )? )? )
+		|	( < COMMA > < NUMBER >)
+		)
+	< BRACE_END >
+}
+
+void Terminal() : {}
+{
+	< LETTER >
+| 	< NUMBER >
+| 	< PERIOD >
+}
+
+
