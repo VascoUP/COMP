@@ -1,10 +1,39 @@
 /**
  * JJTree template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
- */options{  static = true;}PARSER_BEGIN(reg2auto)
-public class reg2auto { 	public static void main(String args []) {    	reg2auto parser = new reg2auto(System.in);
-    		try {		  SimpleNode n = parser.Start();		  n.dump("");		}		catch (Exception e) {		  System.out.println("Error" + e.getMessage());		}	}}PARSER_END(reg2auto)SKIP : {  	" "| 	"\t"| 	"\r"
-| 	"\b"}TOKEN : {
-  	< BACKSLASH: "\\" >
+ */
+options
+{
+  static = true;
+}
+
+PARSER_BEGIN(reg2auto)
+
+public class reg2auto { 
+	public static void main(String args []) {
+    	reg2auto parser = new reg2auto(System.in);
+    
+		try {
+		  SimpleNode n = parser.Start();
+		  n.dump("");
+		}
+		catch (Exception e) {
+		  System.out.println("The given regular expression is not valid\n" + e.getMessage());
+		}
+	}
+}
+
+PARSER_END(reg2auto)
+
+SKIP : {
+  	" "
+| 	"\t"
+| 	"\r"
+| 	"\b"
+}
+
+TOKEN : {
+  
+	< BACKSLASH: "\\" >
 | 	< PERIOD: "." >
 | 	< CARAT: "^" >
 | 	< DOLLAR_SIGN: "$" >
@@ -20,18 +49,31 @@ public class reg2auto { 	public static void main(String args []) {    	reg2aut
 | 	< BRACE_BEGIN: "{" >
 | 	< BRACE_END: "}" >
 | 	< COMMA: "," >
+| 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
 |  	< TERMINATE: "\n" >
 
-}SimpleNode Start() : {}{	Expression() 
-  	< TERMINATE > {		return jjtThis;	}}void Expression() : {}{
- 	ExpressionType() (Expression())?}
+}
+
+SimpleNode Start() : {}
+{
+	Expression() 
+  	< TERMINATE > {
+		return jjtThis;
+	}
+}
+
+void Expression() : {}
+{
+ 	ExpressionType() (Expression())?
+}
 
 void ExpressionType() : {}
 {
 	Terminal()			(Qualifier())?
 | 	ParenthesisExp()	(Qualifier())?
+| 	RangeExp() 			(Qualifier())? 	
 }
 
 void ParenthesisExp() : {}
@@ -39,6 +81,18 @@ void ParenthesisExp() : {}
 	< PARENTHESIS_BEGIN >
 		Expression()
 	< PARENTHESIS_END >
+}
+
+void RangeExp() : {} 
+{
+	< SQUARE_BRACKET_BEGIN >
+		(Range())+
+	< SQUARE_BRACKET_END >
+}
+
+void Range() : {} 
+{
+	T1() (< HYPHEN > T1())?
 }
 
 void Qualifier() : {}
@@ -60,9 +114,14 @@ void ComplexQualifier() : {}
 
 void Terminal() : {}
 {
+	T1()
+| 	< PERIOD >
+}
+
+void T1() : {}
+{
 	< LETTER >
 | 	< NUMBER >
-| 	< PERIOD >
 }
 
 
