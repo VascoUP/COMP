@@ -66,14 +66,14 @@ SimpleNode Start() : {}
 
 void Expression() : {}
 {
- 	ExpressionType() (Expression())?
+ 	ExpressionType() [Expression()]
 }
 
 void ExpressionType() : {}
 {
-	Terminal()			(Qualifier())?
-| 	ParenthesisExp()	(Qualifier())?
-| 	RangeExp() 			(Qualifier())? 	
+	Terminal()			[Qualifier()]
+| 	ParenthesisExp()	[Qualifier()]
+| 	RangeExp() 			[Qualifier()]
 }
 
 void ParenthesisExp() : {}
@@ -97,19 +97,29 @@ void Range() : {}
 
 void Qualifier() : {}
 {
-	< QUESTION_MARK >
-| 	< ASTERISK >
-| 	< PLUS >
+	< QUESTION_MARK > {
+		System.out.println("Zero or one");
+	}
+| 	< ASTERISK > {
+		System.out.println("Zero or more");
+	}
+| 	< PLUS > {
+		System.out.println("One or more");
+	}
 | 	ComplexQualifier()
 }
 
 void ComplexQualifier() : {}
 {
 	< BRACE_BEGIN >
-		(	( < NUMBER > ( < COMMA > ( < NUMBER > )? )? )
-		|	( < COMMA > < NUMBER >)
-		)
+		ComplexQualifierType()
 	< BRACE_END >
+}
+
+void ComplexQualifierType() : {} 
+{
+	( < NUMBER > [ < COMMA > [ < NUMBER > ] ] )
+|	( < COMMA > < NUMBER >)
 }
 
 void Terminal() : {}
