@@ -3,7 +3,7 @@
  */
 options
 {
-  static = true;
+  	static = true;
 }
 
 PARSER_BEGIN(reg2auto)
@@ -53,7 +53,6 @@ TOKEN : {
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
 |  	< TERMINATE: "\n" >
-
 }
 
 SimpleNode Start() : {}
@@ -86,25 +85,19 @@ void ParenthesisExp() : {}
 void RangeExp() : {} 
 {
 	< SQUARE_BRACKET_BEGIN >
-		(Range())+
+		(Range())*
 	< SQUARE_BRACKET_END >
 }
 
 void Range() : {} 
 {
-	T1() (< HYPHEN > T1())?
+	Terminal() (< HYPHEN > Terminal())?
 }
 
-void Qualifier() : {}
+void Qualifier() : { Token t; }
 {
-	< QUESTION_MARK > {
-		System.out.println("Zero or one");
-	}
-| 	< ASTERISK > {
-		System.out.println("Zero or more");
-	}
-| 	< PLUS > {
-		System.out.println("One or more");
+	( t = < QUESTION_MARK > | t = < ASTERISK > | t = < PLUS >) {
+		jjtThis.setTerminal(t.image);
 	}
 | 	ComplexQualifier()
 }
@@ -122,16 +115,20 @@ void ComplexQualifierType() : {}
 |	( < COMMA > < NUMBER >)
 }
 
-void Terminal() : {}
+void Terminal() : { Token t; }
 {
 	T1()
-| 	< PERIOD >
+| 	t = < PERIOD > {
+		jjtThis.setTerminal(t.image);
+	}
 }
 
-void T1() : {}
+void T1() : { Token t; }
 {
-	< LETTER >
-| 	< NUMBER >
+	t = < LETTER > {
+		jjtThis.setTerminal(t.image);
+	}
+| 	t = < NUMBER > {
+		jjtThis.setTerminal(t.image);
+	}
 }
-
-
