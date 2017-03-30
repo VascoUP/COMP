@@ -8,6 +8,8 @@ options
 
 PARSER_BEGIN(reg2auto)
 
+import automata.*;
+
 public class reg2auto { 
 	public static void main(String args []) {
     	reg2auto parser = new reg2auto(System.in);
