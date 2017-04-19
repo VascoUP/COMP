@@ -7,6 +7,7 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants, reg2auto
 
                 try {
                   SimpleNode n = parser.Start();
+                  GenerateENFA.enfa(n);
                   n.dump("");
                 }
                 catch (Exception e) {

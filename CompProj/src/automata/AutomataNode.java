@@ -10,6 +10,12 @@ public class AutomataNode {
     	transitions = new ArrayList<AutomataTransition>();
     }
     
+    public void addTransition(AutomataTransition transition) {
+    	if( transition.getSrc() != this )
+    		return ;
+    	transitions.add(transition);
+    }
+    
     public AutomataNode[] getConnectedNodes() {
     	Iterator<AutomataTransition> transitions_iter = transitions.iterator();
     	AutomataNode[] result = new AutomataNode[transitions.size()];

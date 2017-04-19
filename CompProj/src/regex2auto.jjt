@@ -1,6 +1,3 @@
-/**
- * JJTree template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
- */
 options
 {
   	static = true;
@@ -16,6 +13,7 @@ public class reg2auto {
     
 		try {
 		  SimpleNode n = parser.Start();
+		  GenerateENFA.enfa(n);
 		  n.dump("");
 		}
 		catch (Exception e) {

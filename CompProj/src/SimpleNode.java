@@ -23,6 +23,10 @@ class SimpleNode implements Node {
   public void setTerminal(String str) {
     terminal = str;
   }
+  
+  public String getTerminal() {
+	  return terminal;
+  }
 
   public void jjtOpen() {
   }
