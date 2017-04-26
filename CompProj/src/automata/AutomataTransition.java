@@ -1,6 +1,7 @@
 package automata;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import automata.AutomataNode;
@@ -58,5 +59,19 @@ public class AutomataTransition {
     	AutomataTransition t = new AutomataTransition(AutomataType.E_NFA, src, dst);
     	src.addTransition(t);
     	return t;
+    }
+    
+    @Override
+    public String toString() {
+    	StringBuilder builder = new StringBuilder();
+    	if( empty.getUsed() )
+    		builder.append("Empty string, ");
+    	Iterator<String> iter = tokens.iterator();
+    	while(iter.hasNext()) {
+    		String str = iter.next();
+    		builder.append(str);
+    		builder.append(", ");
+    	}
+    	return new String(builder);
     }
 }

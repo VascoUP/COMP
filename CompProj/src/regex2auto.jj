@@ -17,8 +17,9 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
     
 		try {
 		  SimpleNode n = parser.Start();
-		  GenerateENFA.enfa(n);
-		  n.dump("");
+		  AutomataNode startNode = GenerateENFA.enfa(n);
+		  System.out.println(PrintAutomata.getString(startNode));
+		  //n.dump("");
 		}
 		catch (Exception e) {
 		  System.out.println("The given regular expression is not valid\n" + e.getMessage());
