@@ -8,8 +8,10 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants, reg2auto
                 try {
                   SimpleNode n = parser.Start();
                   AutomataNode startNode = GenerateENFA.enfa(n);
+                  System.out.println("\u005cn");
                   System.out.println(PrintAutomata.getString(startNode));
-                  //n.dump("");
+                  System.out.println("\u005cn");
+                  n.dump("");
                 }
                 catch (Exception e) {
                   System.out.println("The given regular expression is not valid\u005cn" + e.getMessage());

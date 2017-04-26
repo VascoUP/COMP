@@ -1,0 +1,8 @@
+Comment=$1
+Username=$2
+Password=$3
+rm *.class */*.class */*/*.class
+git pull
+git add -A
+git commit -m "{$2}"
+git push

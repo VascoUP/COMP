@@ -62,18 +62,76 @@ public class GenerateENFA {
     public static AutomataExpression expressionType( SimpleNode node ) {
 		System.out.println("expressionType: Node " + node.toString());
     	AutomataNode head = new AutomataNode();
+    	
+    	/*=======================================
+    	 *=	DONE 	-> 	TERMINALS				=
+    	 *=										=
+    	 *=	ADD		->	RANGE EXPRESSIONS		=
+    	 *=			->	PARENTHESIS EXPRESSIONS	=
+    	 *=======================================
+    	 */
     	AutomataTransition transition = terminal((SimpleNode)node.children[0], head);
     	AutomataExpression exp = new AutomataExpression(head, transition.getDst());
     	
     	if( node.children.length > 1 ) {
     		// Has qualifier
-    		System.out.println("	expressionType: Qualifier termianl ");
+    		System.out.println("	expressionType: Qualifier terminal ");
+    		exp = qualifierType((SimpleNode)node.children[1], exp);
     	} else {
     		// Do not have qualifier (only terminal)
-    		System.out.println("	expressionType: Non qualifier termianl ");
+    		System.out.println("	expressionType: Non qualifier terminal ");
     	}
     	
     	return exp;
+    }
+    
+    public static AutomataExpression qualifierType( SimpleNode node, AutomataExpression expression ) {
+    	AutomataNode head;
+    	AutomataNode tail;
+    	AutomataTransition transition;
+    	
+    	System.out.println(node.getTerminal());
+    	System.out.println(node + "");
+    	
+    	if( node.getTerminal() == "*" ) {
+    		head = new AutomataNode();
+    		tail = new AutomataNode();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, head, expression.getHead());
+    		transition.addToken();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, expression.getTail(), tail);
+    		transition.addToken();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, expression.getTail(), expression.getHead());
+    		transition.addToken();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, head, tail);
+    		transition.addToken();
+    	} else if( node.getTerminal() == "+" ){
+    		head = new AutomataNode();
+    		tail = new AutomataNode();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, head, expression.getHead());
+    		transition.addToken();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, expression.getTail(), tail);
+    		transition.addToken();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, expression.getTail(), expression.getHead());
+    		transition.addToken();
+    	} else if( node.getTerminal() == "?" ) {
+    		head = expression.getHead();
+    		tail = expression.getTail();
+    		transition = 
+    				AutomataTransition.toNode(AutomataType.E_NFA, expression.getHead(), expression.getTail());
+    		transition.addToken();
+    	} else {
+    		head = expression.getHead();
+    		tail = expression.getTail();
+    	}
+    	
+    	return new AutomataExpression(head, tail);
     }
     
     public static AutomataTransition terminal( SimpleNode node, AutomataNode head ) {

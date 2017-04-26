@@ -14,8 +14,10 @@ public class reg2auto {
 		try {
 		  SimpleNode n = parser.Start();
 		  AutomataNode startNode = GenerateENFA.enfa(n);
+		  System.out.println("\n");
 		  System.out.println(PrintAutomata.getString(startNode));
-		  //n.dump("");
+		  System.out.println("\n");
+		  n.dump("");
 		}
 		catch (Exception e) {
 		  System.out.println("The given regular expression is not valid\n" + e.getMessage());
