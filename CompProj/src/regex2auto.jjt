@@ -13,9 +13,9 @@ public class reg2auto {
     
 		try {
 		  SimpleNode n = parser.Start();
-		  AutomataNode startNode = GenerateENFA.enfa(n);
+		  AutomataTable table = GenerateENFA.enfa(n);
 		  System.out.println("\n");
-		  System.out.println(PrintAutomata.getString(startNode));
+		  System.out.println(PrintAutomata.getString(table));
 		  System.out.println("\n");
 		  n.dump("");
 		}

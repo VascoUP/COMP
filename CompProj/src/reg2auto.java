@@ -7,9 +7,9 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants, reg2auto
 
                 try {
                   SimpleNode n = parser.Start();
-                  AutomataNode startNode = GenerateENFA.enfa(n);
+                  AutomataTable table = GenerateENFA.enfa(n);
                   System.out.println("\u005cn");
-                  System.out.println(PrintAutomata.getString(startNode));
+                  System.out.println(PrintAutomata.getString(table));
                   System.out.println("\u005cn");
                   n.dump("");
                 }
