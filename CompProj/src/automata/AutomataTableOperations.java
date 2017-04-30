@@ -68,11 +68,8 @@ public class AutomataTableOperations {
 		System.out.println(startState.getID());
 		nTable.stateSetEmptyTransition(acceptState.getID(), startState.getID());
 
-		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
-		endTable.addState(true, true);
-		nTable = join(nTable, endTable);
-
-		int endID = nTable.getStateID() - 1;
+		int endID = table.addState(false, true);
+		nTable.stateSetEmptyTransition(acceptState.getID(), endID);
 		nTable.stateSetEmptyTransition(firstState.getID(), endID);
 
 		return nTable;
