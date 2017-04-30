@@ -47,6 +47,14 @@ public class AutomataTable {
 		return stateID;
 	}
 	
+	public List<AutomataState> getStateInputTransitions(String input, AutomataState state) {
+		HashMap<Integer, List<AutomataState>> hash = stateGrammar.get(state);
+		if( hash == null )
+			return null;
+		int index = AutomataGrammar.grammar.indexOf(AutomataGrammar.emptyToken);
+		return hash.get(index);
+	}
+	
 	public int addState(boolean start, boolean accept) {
 		int id = stateID;
 		stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
