@@ -44,9 +44,9 @@ public class GenerateENFA {
 
 	public static AutomataTable pipeExpression(SimpleNode node, AutomataTable fExp) {
 		System.out.println("pipeExpression: Node " + node.toString());
-		
+
 		AutomataTable sExp = expression((SimpleNode) node.children[0]);
-		
+
 		return AutomataTableOperations.or(fExp, sExp);
 	}
 
@@ -73,27 +73,28 @@ public class GenerateENFA {
 
 		return table;
 	}
+
 	public static void terminal(SimpleNode node, AutomataTable table, int connectID) {
 		System.out.println("terminal: Node " + node.toString());
 		if (node.children.length != 0) {
 			node = (SimpleNode) node.children[0]; // T1
 			node = (SimpleNode) node.children[0]; // Letter or Number
 		}
-		
+
 		AutomataTableOperations.terminal(table, node.getTerminal(), connectID);
-				
+
 		System.out.println("	terminal: Node transition " + node.getTerminal());
 	}
 
 	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
 		AutomataTable result;
-		
+
 		if (node.children.length != 0) {
 			node = (SimpleNode) node.children[0];
 			node = (SimpleNode) node.children[0];
 			return complexQualifierType(node, table);
 		}
-		
+
 		if (node.getTerminal() == "*")
 			result = AutomataTableOperations.zeroOrMore(table);
 		else if (node.getTerminal() == "+")
@@ -107,6 +108,5 @@ public class GenerateENFA {
 	public static AutomataTable complexQualifierType(SimpleNode node, AutomataTable table) {
 		return table;
 	}
-
 
 }

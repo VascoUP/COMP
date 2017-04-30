@@ -2,154 +2,138 @@ package automata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
-public class AutomataTable {	
-	private HashMap<AutomataState, AutomataState[]> stateGrammar;
-	
+public class AutomataTable {
+	private HashMap<AutomataState, HashMap<Integer, List<AutomataState>>> stateGrammar;
+
 	private AutomataType type;
-	
+
 	private int stateID = 1;
-	
-	
+
 	public AutomataTable(AutomataType type) {
 		this.type = type;
 		stateGrammar = new HashMap<>();
 	}
-	
 
-	public HashMap<AutomataState, AutomataState[]> getStateGrammar() {
+	public HashMap<AutomataState, HashMap<Integer, List<AutomataState>>> getStateGrammar() {
 		return stateGrammar;
 	}
 
 	public AutomataState getStateByID(int id) {
-		for( AutomataState state : stateGrammar.keySet() )
-			if( state.getID() == id )
+		for (AutomataState state : stateGrammar.keySet())
+			if (state.getID() == id)
 				return state;
 		return null;
 	}
-	
+
 	public AutomataState[] getAcceptStates() {
 		ArrayList<AutomataState> acceptStates = new ArrayList<>();
-		for( Entry<AutomataState, AutomataState[]> entries : stateGrammar.entrySet() )
-			if( entries.getKey().getAccept() ) 
+		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : stateGrammar.entrySet())
+			if (entries.getKey().getAccept())
 				acceptStates.add(entries.getKey());
 		return acceptStates.toArray(new AutomataState[acceptStates.size()]);
 	}
-	
+
 	public AutomataState getStartState() {
-		for( Entry<AutomataState, AutomataState[]> entries : stateGrammar.entrySet() )
-			if( entries.getKey().getStart() ) 
+		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : stateGrammar.entrySet())
+			if (entries.getKey().getStart())
 				return entries.getKey();
-		return null;		
+		return null;
 	}
 
-	
-	public int addState( boolean start, boolean accept ) {
+	public int addState(boolean start, boolean accept) {
 		int id = stateID;
-		stateGrammar.put(new AutomataState(stateID++, start, accept), 
-							new AutomataState[AutomataGrammar.grammar.size()]);
+		stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
 		return id;
 	}
 
-	
-	public boolean stateCopyTransitions( AutomataState state, AutomataState[] copy ) {
-		if( state == null )
+	public int addState(AutomataState state) {
+		int id = stateID;
+		state.setID(stateID++);
+		stateGrammar.put(state, new HashMap<Integer, List<AutomataState>>());
+		return id;
+	}
+
+	public boolean stateCopyTransitions(AutomataState state, HashMap<Integer, List<AutomataState>> copy) {
+		if (state == null)
 			return false;
-		stateGrammar.put(state, copy);
+
+		HashMap<Integer, List<AutomataState>> currTransitions = stateGrammar.get(state);
+		if (currTransitions == null)
+			return false;
+		
+		for( Entry<Integer, List<AutomataState>> entries : copy.entrySet() ) {
+			List<AutomataState> inputT = currTransitions.get(entries.getKey());
+			if (inputT == null)
+				inputT = new ArrayList<>();
+
+			inputT.addAll(entries.getValue());
+			currTransitions.put(entries.getKey(), inputT);
+		}
+		
+		stateGrammar.put(state, currTransitions);
+
 		return true;
 	}
-	
-	public boolean stateSetTransition( AutomataState state, String input, AutomataState resultingState ) {
+
+	public boolean stateSetTransition(AutomataState state, String input, AutomataState resultingState) {
 		int index = AutomataGrammar.grammar.indexOf(input);
-		if( !stateGrammar.containsKey(resultingState) ||
-			!stateGrammar.containsKey(state) || 
-			index == -1)
+		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state) || index == -1)
 			return false;
-		
-		AutomataState[] transitions = stateGrammar.get(state);
-		transitions[index] = resultingState;
-		
+
+		HashMap<Integer, List<AutomataState>> transitions = stateGrammar.get(state);
+
+		List<AutomataState> inputT = transitions.get(index);
+		if (inputT == null)
+			inputT = new ArrayList<>();
+
+		inputT.add(resultingState);
+		transitions.put(index, inputT);
+
 		return true;
 	}
-	
-	public boolean stateSetEmptyTransition( AutomataState state, AutomataState resultingState ) {
-		if( !stateGrammar.containsKey(resultingState) || 
-			!stateGrammar.containsKey(state) || 
-			type != AutomataType.E_NFA )
+
+	public boolean stateSetEmptyTransition(AutomataState state, AutomataState resultingState) {
+		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state) || type != AutomataType.E_NFA)
 			return false;
 		stateSetTransition(state, AutomataGrammar.emptyToken, resultingState);
 		return true;
 	}
-	
-	public boolean stateSetAllTransitions( AutomataState state, AutomataState resultingState ) {
-		if( !stateGrammar.containsKey(resultingState) ||
-			!stateGrammar.containsKey(state) )
+
+	public boolean stateSetAllTransitions(AutomataState state, AutomataState resultingState) {
+		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
 			return false;
-		
-		AutomataState[] transitions = stateGrammar.get(state);
-		for( int i = 0; i < transitions.length; i++ ) 
-			if( AutomataGrammar.grammar.get(i) != AutomataGrammar.emptyToken )
-				transitions[i] = resultingState;
-		
+
+		HashMap<Integer, List<AutomataState>> transitions = stateGrammar.get(state);
+		for (int i = 0; i < transitions.size(); i++)
+			if (AutomataGrammar.grammar.get(i) != AutomataGrammar.emptyToken)
+				transitions.get(i).add(resultingState);
+
 		return true;
 	}
-	
 
-	public boolean stateCopyTransitions( int id, AutomataState[] copy ) {
+	public boolean stateCopyTransitions(int id, HashMap<Integer, List<AutomataState>> copy) {
 		AutomataState state = getStateByID(id);
 		return stateCopyTransitions(state, copy);
 	}
-	
-	public boolean stateSetTransition( int id, String input, int dstID ) {
+
+	public boolean stateSetTransition(int id, String input, int dstID) {
 		AutomataState fState = getStateByID(id);
 		AutomataState sState = getStateByID(dstID);
 		return stateSetTransition(fState, input, sState);
 	}
-	
-	public boolean stateSetEmptyTransition( int id, int dstID ) {
+
+	public boolean stateSetEmptyTransition(int id, int dstID) {
 		AutomataState fState = getStateByID(id);
 		AutomataState sState = getStateByID(dstID);
 		return stateSetEmptyTransition(fState, sState);
 	}
-	
-	public boolean stateSetAllTransitions( int id, int dstID ) {
+
+	public boolean stateSetAllTransitions(int id, int dstID) {
 		AutomataState fState = getStateByID(id);
 		AutomataState sState = getStateByID(dstID);
 		return stateSetAllTransitions(fState, sState);
-	}
-	
-	
-	public static void main(String args[]) {
-		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
-		AutomataState state = new AutomataState(1, true, true);
-		table.addState(true, true);
-		table.stateSetAllTransitions(1, 1);
-		
-		HashMap<AutomataState, AutomataState[]> stateGrammar = table.getStateGrammar();			
-		AutomataState[] transitions = stateGrammar.get(state);
-		
-		int index = AutomataGrammar.grammar.indexOf("H");
-		System.out.println(index == -1 ? 
-								"input a not found" : (
-								transitions[index] == null ? 
-										"null" : 
-										transitions[index].getID()));
-		index = AutomataGrammar.grammar.indexOf("6");
-		System.out.println(index == -1 ? 
-								"input a not found" : (
-								transitions[index] == null ? 
-										"null" : 
-										transitions[index].getID()));
-		
-		/*
-		table.stateSetTransition(state, "-", state);
-		
-		stateGrammar = table.getStateGrammar();			
-		transitions = stateGrammar.get(state);
-		
-		index = table.grammar.indexOf("-");
-		System.out.println(index == -1 ? "input - not found" : transitions[index]);
-		*/
 	}
 }
