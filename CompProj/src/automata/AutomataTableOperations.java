@@ -54,7 +54,6 @@ public class AutomataTableOperations {
 	}
 
 	public static AutomataTable zeroOrMore(AutomataTable table) {
-		System.out.println("Zero or more");
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
 		AutomataState acceptState = table.getAcceptStates()[0];
 		AutomataState startState = table.getStartState();
@@ -90,8 +89,23 @@ public class AutomataTableOperations {
 		return table;
 	}
 
-	public static AutomataTable zeroOrOne(AutomataTable first) {
-		return first;
+	public static AutomataTable zeroOrOne(AutomataTable table) {
+		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
+		AutomataState acceptState = table.getAcceptStates()[0];
+		AutomataState startState = table.getStartState();
+	
+		AutomataState firstState = new AutomataState(1, true, false);
+		nTable.addState(firstState);
+		AutomataState[] joinStates = new AutomataState[1];
+		joinStates[0] = firstState;
+	
+		nTable = joinTables(nTable, table, joinStates);
+		
+		int endID = table.addState(false, true);
+		nTable.stateSetEmptyTransition(acceptState.getID(), endID);
+		nTable.stateSetEmptyTransition(firstState.getID(), endID);
+		
+		return nTable;
 	}
 
 	public static AutomataTable nToM(AutomataTable first, int n, int m) {
