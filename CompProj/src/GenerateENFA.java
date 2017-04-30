@@ -89,7 +89,7 @@ public class GenerateENFA {
 	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
 		AutomataTable result;
 
-		if (node.children.length != 0) {
+		if (node.children != null && node.children.length != 0) {
 			node = (SimpleNode) node.children[0];
 			node = (SimpleNode) node.children[0];
 			return complexQualifierType(node, table);

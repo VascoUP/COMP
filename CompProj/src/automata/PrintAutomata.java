@@ -24,8 +24,8 @@ public class PrintAutomata {
 			builder.append(key.getID());
 			builder.append(" |");
 
-			for( Entry<Integer, List<AutomataState>> entries : value.entrySet() ) {
-				for ( AutomataState inputResult : entries.getValue() ) {
+			for (Entry<Integer, List<AutomataState>> entries : value.entrySet()) {
+				for (AutomataState inputResult : entries.getValue()) {
 					builder.append(AutomataGrammar.grammar.get(entries.getKey()));
 					builder.append("-");
 					builder.append(inputResult.getID());

@@ -43,6 +43,10 @@ public class AutomataTable {
 		return null;
 	}
 
+	public int getStateID() {
+		return stateID;
+	}
+	
 	public int addState(boolean start, boolean accept) {
 		int id = stateID;
 		stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
@@ -63,8 +67,8 @@ public class AutomataTable {
 		HashMap<Integer, List<AutomataState>> currTransitions = stateGrammar.get(state);
 		if (currTransitions == null)
 			return false;
-		
-		for( Entry<Integer, List<AutomataState>> entries : copy.entrySet() ) {
+
+		for (Entry<Integer, List<AutomataState>> entries : copy.entrySet()) {
 			List<AutomataState> inputT = currTransitions.get(entries.getKey());
 			if (inputT == null)
 				inputT = new ArrayList<>();
@@ -72,7 +76,7 @@ public class AutomataTable {
 			inputT.addAll(entries.getValue());
 			currTransitions.put(entries.getKey(), inputT);
 		}
-		
+
 		stateGrammar.put(state, currTransitions);
 
 		return true;

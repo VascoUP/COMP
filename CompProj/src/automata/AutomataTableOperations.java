@@ -37,10 +37,6 @@ public class AutomataTableOperations {
 
 	public static AutomataTable or(AutomataTable first, AutomataTable second) {
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
-		AutomataState[] firstAcceptStates = first.getAcceptStates();
-		AutomataState firstStartState = first.getStartState();
-		AutomataState[] secondAcceptStates = second.getAcceptStates();
-		AutomataState secondStartState = second.getStartState();
 
 		AutomataState firstState = new AutomataState(1, true, false);
 		nTable.addState(firstState);
@@ -53,14 +49,34 @@ public class AutomataTableOperations {
 		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
 		endTable.addState(true, true);
 		nTable = join(nTable, endTable);
-
-		// int secontStartID = first.addState(false, false);
-
+		
 		return nTable;
 	}
 
-	public static AutomataTable zeroOrMore(AutomataTable first) {
-		return first;
+	public static AutomataTable zeroOrMore(AutomataTable table) {
+		System.out.println("Zero or more");
+		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
+		AutomataState acceptStates = table.getAcceptStates()[0];
+		AutomataState startState = table.getStartState();
+
+		AutomataState firstState = new AutomataState(1, true, false);
+		nTable.addState(firstState);
+		AutomataState[] joinStates = new AutomataState[1];
+		joinStates[0] = firstState;
+
+		nTable = joinTables(nTable, table, joinStates);
+		System.out.println(acceptStates.getID());
+		System.out.println(startState.getID());
+		nTable.stateSetEmptyTransition(acceptStates.getID(), startState.getID());
+		
+		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
+		endTable.addState(true, true);
+		nTable = join(nTable, endTable);
+		
+		int endID = nTable.getStateID() - 1;
+		nTable.stateSetEmptyTransition(firstState.getID(), endID);
+		
+		return nTable;
 	}
 
 	public static AutomataTable oneOrMore(AutomataTable first) {
