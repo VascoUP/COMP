@@ -75,6 +75,7 @@ public class SimpleNode implements Node {
 	 * otherwise overriding toString() is probably all you need to do.
 	 */
 
+	@Override
 	public String toString() {
 		return reg2autoTreeConstants.jjtNodeName[id];
 	}

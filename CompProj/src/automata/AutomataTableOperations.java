@@ -15,8 +15,8 @@ public class AutomataTableOperations {
 			first.stateSetEmptyTransition(state.getID(), secontStartID);
 		}
 
-		for (	Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : 
-				second.getStateGrammar().entrySet()) {
+		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : second.getStateGrammar()
+				.entrySet()) {
 			System.out.println("Adding " + entries.getKey());
 			int sID;
 			if (secondStartState != entries.getKey()) {
@@ -49,7 +49,7 @@ public class AutomataTableOperations {
 		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
 		endTable.addState(true, true);
 		nTable = join(nTable, endTable);
-		
+
 		return nTable;
 	}
 
@@ -68,14 +68,14 @@ public class AutomataTableOperations {
 		System.out.println(acceptState.getID());
 		System.out.println(startState.getID());
 		nTable.stateSetEmptyTransition(acceptState.getID(), startState.getID());
-		
+
 		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
 		endTable.addState(true, true);
 		nTable = join(nTable, endTable);
-		
+
 		int endID = nTable.getStateID() - 1;
 		nTable.stateSetEmptyTransition(firstState.getID(), endID);
-		
+
 		return nTable;
 	}
 
@@ -86,7 +86,7 @@ public class AutomataTableOperations {
 
 		int endID = table.addState(false, true);
 		table.stateSetEmptyTransition(acceptState.getID(), endID);
-		
+
 		return table;
 	}
 
