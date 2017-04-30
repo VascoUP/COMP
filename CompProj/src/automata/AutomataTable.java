@@ -1,6 +1,8 @@
 package automata;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class AutomataTable {	
 	private HashMap<AutomataState, AutomataState[]> stateGrammar;
@@ -16,9 +18,30 @@ public class AutomataTable {
 	}
 	
 
-	
 	public HashMap<AutomataState, AutomataState[]> getStateGrammar() {
 		return stateGrammar;
+	}
+
+	public AutomataState getStateByID(int id) {
+		for( AutomataState state : stateGrammar.keySet() )
+			if( state.getID() == id )
+				return state;
+		return null;
+	}
+	
+	public AutomataState[] getAcceptStates() {
+		ArrayList<AutomataState> acceptStates = new ArrayList<>();
+		for( Entry<AutomataState, AutomataState[]> entries : stateGrammar.entrySet() )
+			if( entries.getKey().getAccept() ) 
+				acceptStates.add(entries.getKey());
+		return acceptStates.toArray(new AutomataState[acceptStates.size()]);
+	}
+	
+	public AutomataState getStartState() {
+		for( Entry<AutomataState, AutomataState[]> entries : stateGrammar.entrySet() )
+			if( entries.getKey().getStart() ) 
+				return entries.getKey();
+		return null;		
 	}
 
 	
@@ -28,14 +51,14 @@ public class AutomataTable {
 							new AutomataState[AutomataGrammar.grammar.size()]);
 		return id;
 	}
+
 	
-	public AutomataState getStateByID(int id) {
-		for( AutomataState state : stateGrammar.keySet() )
-			if( state.getID() == id )
-				return state;
-		return null;
+	public boolean stateCopyTransitions( AutomataState state, AutomataState[] copy ) {
+		if( state == null )
+			return false;
+		stateGrammar.put(state, copy);
+		return true;
 	}
-	
 	
 	public boolean stateSetTransition( AutomataState state, String input, AutomataState resultingState ) {
 		int index = AutomataGrammar.grammar.indexOf(input);
@@ -73,6 +96,11 @@ public class AutomataTable {
 	}
 	
 
+	public boolean stateCopyTransitions( int id, AutomataState[] copy ) {
+		AutomataState state = getStateByID(id);
+		return stateCopyTransitions(state, copy);
+	}
+	
 	public boolean stateSetTransition( int id, String input, int dstID ) {
 		AutomataState fState = getStateByID(id);
 		AutomataState sState = getStateByID(dstID);

@@ -11,6 +11,10 @@ public class AutomataState implements Comparable<AutomataState> {
 		this.accept = accept;
 	}
 	
+	/*public AutomataState copyAutomataState(AutomataState state, int nID) {
+		return new AutomataState(nID, state.getStart(), state.getAccept());
+	}*/
+	
 	public int getID() {
 		return id;
 	}
@@ -19,8 +23,16 @@ public class AutomataState implements Comparable<AutomataState> {
 		return start;
 	}
 	
+	public void setStart(boolean start) {
+		this.start = start;
+	}
+	
 	public boolean getAccept() {
 		return accept;
+	}
+	
+	public void setAccept(boolean accept) {
+		this.accept = accept;
 	}
 
 	@Override
