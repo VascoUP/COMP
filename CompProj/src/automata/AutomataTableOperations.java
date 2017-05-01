@@ -90,18 +90,18 @@ public class AutomataTableOperations {
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
 		AutomataState acceptState = table.getAcceptStates()[0];
 		AutomataState startState = table.getStartState();
-	
+
 		AutomataState firstState = new AutomataState(1, true, false);
 		nTable.addState(firstState);
 		AutomataState[] joinStates = new AutomataState[1];
 		joinStates[0] = firstState;
-	
+
 		nTable = joinTables(nTable, table, joinStates);
-		
+
 		int endID = table.addState(false, true);
 		nTable.stateSetEmptyTransition(acceptState.getID(), endID);
 		nTable.stateSetEmptyTransition(firstState.getID(), endID);
-		
+
 		return nTable;
 	}
 

@@ -2,6 +2,7 @@
 import automata.AutomataTable;
 import automata.AutomataTableOperations;
 import automata.AutomataType;
+import automata.PrintAutomata;
 
 /*import automata.AutomataExpression;
 import automata.AutomataNode;
@@ -25,7 +26,7 @@ public class GenerateENFA {
 	}
 
 	public static AutomataTable expression(SimpleNode node) {
-		System.out.println("expression: Node " + node.toString());
+		//System.out.println("expression: Node " + node.toString());
 
 		AutomataTable fExp = expressionType((SimpleNode) node.children[0]);
 		AutomataTable exp = null;
@@ -43,7 +44,7 @@ public class GenerateENFA {
 	}
 
 	public static AutomataTable pipeExpression(SimpleNode node, AutomataTable fExp) {
-		System.out.println("pipeExpression: Node " + node.toString());
+		//System.out.println("pipeExpression: Node " + node.toString());
 
 		AutomataTable sExp = expression((SimpleNode) node.children[0]);
 
@@ -51,31 +52,42 @@ public class GenerateENFA {
 	}
 
 	public static AutomataTable expressionType(SimpleNode node) {
-		System.out.println("expressionType: Node " + node.toString());
+		//System.out.println("expressionType: Node " + node.toString());
 
 		/*
-		 * ======================================= = DONE -> TERMINALS = = = =
-		 * ADD -> RANGE EXPRESSIONS = = -> PARENTHESIS EXPRESSIONS =
+		 * ======================================= 
+		 * = DONE 	-> TERMINALS 				 = 
+		 * = 		-> PARENTHESIS EXPRESSIONS 	 =
+		 * = ADD 	-> RANGE EXPRESSIONS 		 =
 		 * =======================================
 		 */
-		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
-		int id = table.addState(true, false);
-		terminal((SimpleNode) node.children[0], table, id);
+		AutomataTable table;
+		
+		if( node.children[0].toString() == "Terminal" ) {
+			table = new AutomataTable(AutomataType.E_NFA);
+			int id = table.addState(true, false);
+			terminal((SimpleNode) node.children[0], table, id);
+		}
+		else if( node.children[0].toString() == "ParenthesisExp" ) {
+			SimpleNode nextNode = (SimpleNode) node.children[0];
+			table = expression((SimpleNode) nextNode.children[0]);
+		} else
+			table = null;
 
 		if (node.children.length > 1) {
 			// Has qualifier
-			System.out.println("	expressionType: Qualifier terminal ");
+			//System.out.println("	expressionType: Qualifier terminal ");
 			table = qualifierType((SimpleNode) node.children[1], table);
 		} else {
 			// Do not have qualifier (only terminal)
-			System.out.println("	expressionType: Non qualifier terminal ");
+			//System.out.println("	expressionType: Non qualifier terminal ");
 		}
 
 		return table;
 	}
 
 	public static void terminal(SimpleNode node, AutomataTable table, int connectID) {
-		System.out.println("terminal: Node " + node.toString());
+		//System.out.println("terminal: Node " + node.toString());
 		if (node.children.length != 0) {
 			node = (SimpleNode) node.children[0]; // T1
 			node = (SimpleNode) node.children[0]; // Letter or Number
@@ -83,7 +95,7 @@ public class GenerateENFA {
 
 		AutomataTableOperations.terminal(table, node.getTerminal(), connectID);
 
-		System.out.println("	terminal: Node transition " + node.getTerminal());
+		//System.out.println("	terminal: Node transition " + node.getTerminal());
 	}
 
 	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
