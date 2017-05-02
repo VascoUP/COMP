@@ -270,7 +270,7 @@ void Range() : {/*@bgen(jjtree) Range */
 {/*@bgen(jjtree) Range */
         try {
 /*@egen*/
-	Terminal() (< HYPHEN > Terminal())?/*@bgen(jjtree)*/
+	T1() (< HYPHEN > T1())?/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);

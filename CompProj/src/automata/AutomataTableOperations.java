@@ -53,25 +53,26 @@ public class AutomataTableOperations {
 		return nTable;
 	}
 
+	
 	public static AutomataTable zeroOrMore(AutomataTable table) {
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
 		AutomataState acceptState = table.getAcceptStates()[0];
 		AutomataState startState = table.getStartState();
 
 		AutomataState firstState = new AutomataState(1, true, false);
-		nTable.addState(firstState);
+		int firsID = nTable.addState(true, false);
 		AutomataState[] joinStates = new AutomataState[1];
 		joinStates[0] = firstState;
 
 		nTable = joinTables(nTable, table, joinStates);
-		System.out.println(acceptState.getID());
-		System.out.println(startState.getID());
 		nTable.stateSetEmptyTransition(acceptState.getID(), startState.getID());
-
-		int endID = table.addState(false, true);
+		
+		int endID = nTable.addState(false, true);
 		nTable.stateSetEmptyTransition(acceptState.getID(), endID);
-		nTable.stateSetEmptyTransition(firstState.getID(), endID);
+		nTable.stateSetEmptyTransition(firsID, endID);
 
+		acceptState.setAccept(false);
+		
 		return nTable;
 	}
 
@@ -117,8 +118,10 @@ public class AutomataTableOperations {
 		return first;
 	}
 
-	public static void terminal(AutomataTable table, String input, int fromState) {
+	
+	public static int terminal(AutomataTable table, String input, int fromState) {
 		int toState = table.addState(false, true);
 		table.stateSetTransition(fromState, input, toState);
+		return toState;
 	}
 }

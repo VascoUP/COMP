@@ -99,7 +99,7 @@ void RangeExp() : {}
 
 void Range() : {} 
 {
-	Terminal() (< HYPHEN > Terminal())?
+	T1() (< HYPHEN > T1())?
 }
 
 void Qualifier() : { Token t; }

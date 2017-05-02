@@ -57,7 +57,10 @@ public class AutomataTable {
 
 	public int addState(boolean start, boolean accept) {
 		int id = stateID;
-		stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
+		System.out.println(stateID);
+		HashMap<Integer, List<AutomataState>> hash = stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
+		System.out.println(hash == null ? "null" : "not null");
+		System.out.println(stateID);
 		return id;
 	}
 
@@ -101,7 +104,8 @@ public class AutomataTable {
 		if (inputT == null)
 			inputT = new ArrayList<>();
 
-		inputT.add(resultingState);
+		if( !inputT.contains(resultingState) )
+			inputT.add(resultingState);
 		transitions.put(index, inputT);
 
 		return true;

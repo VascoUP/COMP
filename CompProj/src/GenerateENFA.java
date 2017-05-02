@@ -1,4 +1,5 @@
 
+import automata.AutomataGrammar;
 import automata.AutomataTable;
 import automata.AutomataTableOperations;
 import automata.AutomataType;
@@ -10,13 +11,11 @@ import automata.AutomataTransition;
 import automata.AutomataType;*/
 
 public class GenerateENFA {
-	// private static final String START_NAME = "Start";
 	private static final String EXPRESSION_NAME = "Expression";
-	/*
-	 * private static final String EXPRESSION_TYPE_NAME = "ExpressionType";
-	 * private static final String PIPE_EXPRESSION_NAME = "PipeExpression";
-	 */
+	private static final String TERMINAL_NAME = "Terminal";
+	private static final String PARENTHESIS_NAME = "ParenthesisExp";
 
+	
 	public static AutomataTable enfa(SimpleNode root) {
 		return start(root);
 	}
@@ -25,6 +24,13 @@ public class GenerateENFA {
 		return expression((SimpleNode) root.children[0]);
 	}
 
+	
+	
+	/*
+	 * ======================
+	 * ===== EXPRESSION =====
+	 * ======================
+	 */
 	public static AutomataTable expression(SimpleNode node) {
 		//System.out.println("expression: Node " + node.toString());
 
@@ -43,6 +49,14 @@ public class GenerateENFA {
 		return exp == null ? fExp : exp;
 	}
 
+	
+	
+	/*
+	 * ======================
+	 * == PIPES EXPRESSION ==
+	 * ======================
+	 */
+	
 	public static AutomataTable pipeExpression(SimpleNode node, AutomataTable fExp) {
 		//System.out.println("pipeExpression: Node " + node.toString());
 
@@ -51,6 +65,13 @@ public class GenerateENFA {
 		return AutomataTableOperations.or(fExp, sExp);
 	}
 
+	
+	
+	/*
+	 * ======================
+	 * == EXPRESSIONS TYPE ==
+	 * ======================
+	 */
 	public static AutomataTable expressionType(SimpleNode node) {
 		//System.out.println("expressionType: Node " + node.toString());
 
@@ -61,28 +82,59 @@ public class GenerateENFA {
 		 * = ADD 	-> RANGE EXPRESSIONS 		 =
 		 * =======================================
 		 */
+		AutomataTable table = parseExpressionType(node);
+
+		if (node.children.length > 1)
+			table = qualifierType((SimpleNode) node.children[1], table);
+
+		return table;
+	}
+	
+	public static AutomataTable parseExpressionType(SimpleNode node) {
 		AutomataTable table;
 		
-		if( node.children[0].toString() == "Terminal" ) {
-			table = new AutomataTable(AutomataType.E_NFA);
-			int id = table.addState(true, false);
-			terminal((SimpleNode) node.children[0], table, id);
-		}
-		else if( node.children[0].toString() == "ParenthesisExp" ) {
-			SimpleNode nextNode = (SimpleNode) node.children[0];
-			table = expression((SimpleNode) nextNode.children[0]);
+		if( node.children[0].toString() == TERMINAL_NAME )
+			table = tableTerminal(node);
+		else if( node.children[0].toString() == PARENTHESIS_NAME )
+			table = expression((SimpleNode) ((SimpleNode) node.children[0]).children[0]);
+		else
+			table = rangeExpression((SimpleNode) node.children[0]);
+		
+		return table;
+	}
+	
+	
+	public static AutomataTable rangeExpression(SimpleNode node) {
+		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
+		int fromID = table.addState(true, false);
+		int toID = table.addState(false, true);
+		for( Node childNode : node.children )
+			range((SimpleNode)childNode, table, fromID, toID);			
+		return table;
+	}
+	
+	public static void range(SimpleNode node, AutomataTable table, int fromState, int toState) {
+		SimpleNode firstInput = (SimpleNode) ((SimpleNode) node.children[0]).children[0];
+		if( node.children.length > 1 ) {
+			SimpleNode secondInput= (SimpleNode) ((SimpleNode) node.children[1]).children[0];
+			String[] rangeInputs = 
+					AutomataGrammar.getRangeInput(firstInput.getTerminal(), secondInput.getTerminal());
+			for( String input : rangeInputs )
+				table.stateSetTransition(fromState, input, toState);
 		} else
-			table = null;
-
-		if (node.children.length > 1) {
-			// Has qualifier
-			//System.out.println("	expressionType: Qualifier terminal ");
-			table = qualifierType((SimpleNode) node.children[1], table);
-		} else {
-			// Do not have qualifier (only terminal)
-			//System.out.println("	expressionType: Non qualifier terminal ");
-		}
-
+			table.stateSetTransition(fromState, firstInput.getTerminal(), toState);
+	}
+	
+	/*
+	 * ======================
+	 * ====== TERMINAL ======
+	 * ======================
+	 */
+	public static AutomataTable tableTerminal(SimpleNode node) {
+		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
+		terminal((SimpleNode) node.children[0], 
+					table, 
+					table.addState(true, false));
 		return table;
 	}
 
@@ -97,6 +149,14 @@ public class GenerateENFA {
 
 		//System.out.println("	terminal: Node transition " + node.getTerminal());
 	}
+	
+	
+	
+	/*
+	 * ======================
+	 * ===== QUALIFIERS =====
+	 * ======================
+	 */
 
 	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
 		AutomataTable result;
