@@ -3,7 +3,6 @@ import automata.AutomataGrammar;
 import automata.AutomataTable;
 import automata.AutomataTableOperations;
 import automata.AutomataType;
-import automata.PrintAutomata;
 
 /*import automata.AutomataExpression;
 import automata.AutomataNode;

@@ -7,11 +7,11 @@ import java.util.Map.Entry;
 public class PrintAutomata {
 	public static String getString(AutomataTable table) {
 		StringBuilder builder = new StringBuilder();
-		HashMap<AutomataState, HashMap<Integer, List<AutomataState>>> stateGrammar = table.getStateGrammar();
+		HashMap<AutomataState, HashMap<String, List<AutomataState>>> stateGrammar = table.getStateGrammar();
 
-		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> state : stateGrammar.entrySet()) {
+		for (Entry<AutomataState, HashMap<String, List<AutomataState>>> state : stateGrammar.entrySet()) {
 			AutomataState key = state.getKey();
-			HashMap<Integer, List<AutomataState>> value = state.getValue();
+			HashMap<String, List<AutomataState>> value = state.getValue();
 
 			if (key.getStart())
 				builder.append("->");
@@ -24,9 +24,9 @@ public class PrintAutomata {
 			builder.append(key.getID());
 			builder.append(" |");
 
-			for (Entry<Integer, List<AutomataState>> entries : value.entrySet()) {
+			for (Entry<String, List<AutomataState>> entries : value.entrySet()) {
 				for (AutomataState inputResult : entries.getValue()) {
-					builder.append(AutomataGrammar.grammar.get(entries.getKey()));
+					builder.append(entries.getKey());
 					builder.append("-");
 					builder.append(inputResult.getID());
 					builder.append(" |");

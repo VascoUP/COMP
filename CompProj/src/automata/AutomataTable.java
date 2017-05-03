@@ -1,12 +1,13 @@
 package automata;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
 public class AutomataTable {
-	private HashMap<AutomataState, HashMap<Integer, List<AutomataState>>> stateGrammar;
+	private HashMap<AutomataState, HashMap<String, List<AutomataState>>> stateGrammar;
 
 	private AutomataType type;
 
@@ -17,7 +18,7 @@ public class AutomataTable {
 		stateGrammar = new HashMap<>();
 	}
 
-	public HashMap<AutomataState, HashMap<Integer, List<AutomataState>>> getStateGrammar() {
+	public HashMap<AutomataState, HashMap<String, List<AutomataState>>> getStateGrammar() {
 		return stateGrammar;
 	}
 
@@ -30,14 +31,14 @@ public class AutomataTable {
 
 	public AutomataState[] getAcceptStates() {
 		ArrayList<AutomataState> acceptStates = new ArrayList<>();
-		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : stateGrammar.entrySet())
+		for (Entry<AutomataState, HashMap<String, List<AutomataState>>> entries : stateGrammar.entrySet())
 			if (entries.getKey().getAccept())
 				acceptStates.add(entries.getKey());
 		return acceptStates.toArray(new AutomataState[acceptStates.size()]);
 	}
 
 	public AutomataState getStartState() {
-		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : stateGrammar.entrySet())
+		for (Entry<AutomataState, HashMap<String, List<AutomataState>>> entries : stateGrammar.entrySet())
 			if (entries.getKey().getStart())
 				return entries.getKey();
 		return null;
@@ -48,38 +49,35 @@ public class AutomataTable {
 	}
 
 	public List<AutomataState> getStateInputTransitions(String input, AutomataState state) {
-		HashMap<Integer, List<AutomataState>> hash = stateGrammar.get(state);
+		HashMap<String, List<AutomataState>> hash = stateGrammar.get(state);
 		if (hash == null)
 			return null;
-		int index = AutomataGrammar.grammar.indexOf(AutomataGrammar.emptyToken);
-		return hash.get(index);
+		return hash.get(input);
 	}
 
 	public int addState(boolean start, boolean accept) {
 		int id = stateID;
-		System.out.println(stateID);
-		HashMap<Integer, List<AutomataState>> hash = stateGrammar.put(new AutomataState(stateID++, start, accept), new HashMap<Integer, List<AutomataState>>());
-		System.out.println(hash == null ? "null" : "not null");
-		System.out.println(stateID);
+		stateGrammar.put(new AutomataState(stateID++, start, accept), 
+						new HashMap<String, List<AutomataState>>());
 		return id;
 	}
 
 	public int addState(AutomataState state) {
 		int id = stateID;
 		state.setID(stateID++);
-		stateGrammar.put(state, new HashMap<Integer, List<AutomataState>>());
+		stateGrammar.put(state, new HashMap<String, List<AutomataState>>());
 		return id;
 	}
 
-	public boolean stateCopyTransitions(AutomataState state, HashMap<Integer, List<AutomataState>> copy) {
+	public boolean stateCopyTransitions(AutomataState state, HashMap<String, List<AutomataState>> copy) {
 		if (state == null)
 			return false;
 
-		HashMap<Integer, List<AutomataState>> currTransitions = stateGrammar.get(state);
+		HashMap<String, List<AutomataState>> currTransitions = stateGrammar.get(state);
 		if (currTransitions == null)
 			return false;
 
-		for (Entry<Integer, List<AutomataState>> entries : copy.entrySet()) {
+		for (Entry<String, List<AutomataState>> entries : copy.entrySet()) {
 			List<AutomataState> inputT = currTransitions.get(entries.getKey());
 			if (inputT == null)
 				inputT = new ArrayList<>();
@@ -94,19 +92,18 @@ public class AutomataTable {
 	}
 
 	public boolean stateSetTransition(AutomataState state, String input, AutomataState resultingState) {
-		int index = AutomataGrammar.grammar.indexOf(input);
-		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state) || index == -1)
+		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
 			return false;
 
-		HashMap<Integer, List<AutomataState>> transitions = stateGrammar.get(state);
+		HashMap<String, List<AutomataState>> transitions = stateGrammar.get(state);
 
-		List<AutomataState> inputT = transitions.get(index);
+		List<AutomataState> inputT = transitions.get(input);
 		if (inputT == null)
 			inputT = new ArrayList<>();
 
 		if( !inputT.contains(resultingState) )
 			inputT.add(resultingState);
-		transitions.put(index, inputT);
+		transitions.put(input, inputT);
 
 		return true;
 	}
@@ -118,19 +115,38 @@ public class AutomataTable {
 		return true;
 	}
 
+	public boolean stateSetArrTransition(AutomataState state, AutomataState resultingState, String[] arr) {
+		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
+			return false;
+
+		HashMap<String, List<AutomataState>> transitions = stateGrammar.get(state);
+		for( String str : arr ) {
+			List<AutomataState> list = transitions.get(str);
+			if( list == null )
+				list = new ArrayList<>();
+			list.add(resultingState);
+			//transitions.put(str, list);
+		}
+
+		return true;
+	}
+	
 	public boolean stateSetAllTransitions(AutomataState state, AutomataState resultingState) {
 		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
 			return false;
 
-		HashMap<Integer, List<AutomataState>> transitions = stateGrammar.get(state);
-		for (int i = 0; i < transitions.size(); i++)
-			if (AutomataGrammar.grammar.get(i) != AutomataGrammar.emptyToken)
-				transitions.get(i).add(resultingState);
-
-		return true;
+		ArrayList<String> arrList = new ArrayList<>();
+		List<String> lowercase = Arrays.asList(AutomataGrammar.getRangeInput("a", "z"));
+		List<String> uppercase = Arrays.asList(AutomataGrammar.getRangeInput("A", "Z"));
+		List<String> numbers = Arrays.asList(AutomataGrammar.getRangeInput("0", "9"));
+		arrList.addAll(lowercase);
+		arrList.addAll(uppercase);
+		arrList.addAll(numbers);
+		
+		return stateSetArrTransition(state, resultingState, arrList.toArray(new String[arrList.size()]));
 	}
 
-	public boolean stateCopyTransitions(int id, HashMap<Integer, List<AutomataState>> copy) {
+	public boolean stateCopyTransitions(int id, HashMap<String, List<AutomataState>> copy) {
 		AutomataState state = getStateByID(id);
 		return stateCopyTransitions(state, copy);
 	}

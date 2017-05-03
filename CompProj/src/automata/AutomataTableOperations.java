@@ -15,7 +15,8 @@ public class AutomataTableOperations {
 			first.stateSetEmptyTransition(state.getID(), secontStartID);
 		}
 
-		for (Entry<AutomataState, HashMap<Integer, List<AutomataState>>> entries : second.getStateGrammar()
+		for (Entry<AutomataState, 
+					HashMap<String, List<AutomataState>>> entries : second.getStateGrammar()
 				.entrySet()) {
 			System.out.println("Adding " + entries.getKey());
 			int sID;
