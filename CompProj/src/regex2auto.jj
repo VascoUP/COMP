@@ -18,9 +18,10 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
 		try {
 		  SimpleNode n = parser.Start();
 		  AutomataTable table = GenerateENFA.enfa(n);
-		  System.out.println("\n");
-		  System.out.println(PrintAutomata.getString(table));
-		  System.out.println("\n");
+		  ProgramMaker maker = new CProgram(table);
+		  maker.toFile();
+		  maker = new JavaProgram(table);
+		  maker.toFile();
 		  n.dump("");
 		}
 		catch (Exception e) {
