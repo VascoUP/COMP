@@ -1,8 +1,8 @@
 package automata;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class AutomataTableOperations {
 	private static AutomataTable joinTables(AutomataTable first, AutomataTable second, AutomataState[] joinState) {
@@ -15,9 +15,10 @@ public class AutomataTableOperations {
 			first.stateSetEmptyTransition(state.getID(), secontStartID);
 		}
 
-		for (Entry<AutomataState, 
-					HashMap<String, List<AutomataState>>> entries : second.getStateGrammar()
-				.entrySet()) {
+		for (Entry<	AutomataState, 
+					HashMap<String, Set<AutomataState>>> entries : 
+				second.getStateGrammar().entrySet()) {
+			
 			System.out.println("Adding " + entries.getKey());
 			int sID;
 			if (secondStartState != entries.getKey()) {
@@ -91,7 +92,7 @@ public class AutomataTableOperations {
 	public static AutomataTable zeroOrOne(AutomataTable table) {
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
 		AutomataState acceptState = table.getAcceptStates()[0];
-		AutomataState startState = table.getStartState();
+		//AutomataState startState = table.getStartState();
 
 		AutomataState firstState = new AutomataState(1, true, false);
 		nTable.addState(firstState);
