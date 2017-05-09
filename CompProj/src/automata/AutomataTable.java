@@ -2,11 +2,14 @@ package automata;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -55,26 +58,32 @@ public class AutomataTable {
 
 	public Set<AutomataState> getStateInputTransitions(String input, AutomataState state) {
 		HashMap<String, Set<AutomataState>> hash = stateGrammar.get(state);
-		if (hash == null)
+		if (hash == null) 
 			return null;
 		return hash.get(input);
 	}
 
 
 	public SortedSet<AutomataState> getEClosure(AutomataState state) {
-		Set<AutomataState> states = new HashSet<>();
+		List<AutomataState> states = new ArrayList<>();
 		states.add(state);
 		return getEClosure(states);
 	}
 	
-	public SortedSet<AutomataState> getEClosure(Set<AutomataState> states) {
-		Set<AutomataState> setStates = new LinkedHashSet<>(states);
+	public SortedSet<AutomataState> getEClosure(Collection<AutomataState> states) {
+		Queue<AutomataState> queueStates = new PriorityQueue<>();
+		queueStates.addAll(states);
+		
 		SortedSet<AutomataState> processedStates = new TreeSet<>();
-		for( AutomataState state : setStates ) {
+		while (!queueStates.isEmpty()) {
+			AutomataState state = queueStates.remove();
 			if( processedStates.contains(state) )
 				continue;
 			processedStates.add(state);
-			setStates.addAll(getStateInputTransitions(AutomataGrammar.emptyToken, state));
+			Set<AutomataState> emptyTransitions = getStateInputTransitions(AutomataGrammar.emptyToken, state);
+			if( emptyTransitions == null )
+				continue;
+			queueStates.addAll(emptyTransitions);
 		}
 		return processedStates;
 	}
