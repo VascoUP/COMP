@@ -17,11 +17,8 @@ public class reg2auto {
 		  System.out.println(PrintAutomata.getString(table));
 		  AutomataTable dfatable = Translate.getDFA(table);
 		  System.out.println(PrintAutomata.getString(dfatable));
-		  /*ProgramMaker maker = new CProgram(table);
-		  maker.toFile();
-		  maker = new JavaProgram(table);
-		  maker.toFile();*/
-		  n.dump("");
+		  DisplayAutomata.display(dfatable);
+		  //n.dump("");
 		}
 		catch (Exception e) {
 		  System.out.println("The given regular expression is not valid\n" + e.getMessage());
