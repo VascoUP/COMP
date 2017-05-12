@@ -7,6 +7,7 @@
 PARSER_BEGIN(reg2auto)
 
 import automata.*;
+import codemaking.*;
 
 public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ {/*@bgen(jjtree)*/
   protected static JJTreg2autoState jjtree = new JJTreg2autoState();

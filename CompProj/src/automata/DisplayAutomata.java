@@ -1,3 +1,5 @@
+package automata;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,10 +10,9 @@ import java.util.Map.Entry;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
-import automata.AutomataState;
-import automata.AutomataTable;
-
 public class DisplayAutomata {
+	private static int edgeID = 1;
+	
 	public static void display(AutomataTable table){
 		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
 		Graph graph = new SingleGraph("eNFA");
@@ -22,6 +23,7 @@ public class DisplayAutomata {
 		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
 			AutomataState key = state.getKey();
 			HashMap<String, Set<AutomataState>> value = state.getValue();
+			System.out.println("New edges " + stateToString(key));
 			
 			addNode(key, states, graph);
 			
@@ -62,7 +64,7 @@ public class DisplayAutomata {
 			}
 		}
 		
-		Edge e = graph.addEdge(entry, stateToString(src), stateToString(dst), true);
+		Edge e = graph.addEdge(edgeID++ + "", stateToString(src), stateToString(dst), true);
 		e.addAttribute("ui.label", entry);
 		addedEdges.add(e);
 	}

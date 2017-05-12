@@ -6,6 +6,7 @@ options
 PARSER_BEGIN(reg2auto)
 
 import automata.*;
+import codemaking.*;
 
 public class reg2auto { 
 	public static void main(String args []) {

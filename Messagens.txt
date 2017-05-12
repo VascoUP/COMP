@@ -1,0 +1,31 @@
+Pedido:			LOGIN username password
+Resposta:		LOGIN True/False
+
+Pedido: 		REGISTER username password
+Resposta:		LOGIN True/False
+
+Pedido:			LOGOUT
+Resposta:		LOGOUT
+
+Pedido: 		GETROOMS
+Resposta:		GETROOMS "roomID\0roomName"*
+
+Pedido:			GETFRIENDS
+Resposta:		GETFRIENDS "username"*
+
+Pedido:			GETFRIENDREQUESTS
+Resposta:		GETFRIENDREQUESTS "username"*
+
+Pedido:			FRIENDREQUEST username
+Resposta Client:	FRIENDREQUEST username
+
+Pedido:			ANSWERFRIEND username True/False
+Resposta Client:	ANSWERFRIEND username True/False
+
+Pedido:			GETMESSAGES roomID
+Resposta:		GETMESSAGES "username\0message"*
+
+Pedido:			MESSAGE roomID message
+Resposta Clients:	MESSAGE username message
+
+

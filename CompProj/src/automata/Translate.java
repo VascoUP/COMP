@@ -1,42 +1,31 @@
 package automata;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Queue;
 import java.util.Set;
 
 public class Translate {
 	public static AutomataTable getDFA(AutomataTable enfa) {
 		AutomataTable table = new AutomataTable(AutomataType.DFA);
-		Queue<List<AutomataState>> processStates = new ArrayDeque<>();
+		List<List<AutomataState>> processStates = new ArrayList<>();
+		int index = 0;
 		
 		List<AutomataState> setStates = new ArrayList<>(enfa.getEClosure(enfa.getStartState()));
 		
 		addState(table, setStates, true, isFinal(setStates));
 		processStates.add(setStates);
 		
-		while(!processStates.isEmpty()) {
-			setStates = processStates.poll();
-			System.out.println("setStates");
-			printSetState(setStates);
+		while(index < processStates.size()) {
+			setStates = new ArrayList<>(processStates.get(index++));
 			
 			AutomataState newTableState = setStates.get(setStates.size() - 1);
 			setStates.remove(setStates.size() - 1);
 			
 			HashMap<String, Set<AutomataState>> transitions = getSetStateTransitions(enfa, setStates);
-			
-			/*for( Entry<String, Set<AutomataState>> inputStateT : transitions.entrySet()) {
-				System.out.print(inputStateT.getKey() + " -");
-				for(AutomataState transition : inputStateT.getValue())
-					System.out.print(transition.getID() + " |");
-				System.out.println("");
-			}*/
-			
+
 			addInputEClosure(table, enfa, newTableState, transitions, processStates);
 		}
 		
@@ -48,7 +37,7 @@ public class Translate {
 							AutomataTable enfa, 
 							AutomataState srcState, 
 							HashMap<String, Set<AutomataState>> transitions, 
-							Queue<List<AutomataState>> processStates) {
+							List<List<AutomataState>> processStates) {
 		for( Entry<String, Set<AutomataState>> inputStateT : transitions.entrySet())
 			addQueue(table, enfa, srcState, inputStateT.getKey(), enfa.getEClosure(inputStateT.getValue()), processStates);
 	}
@@ -59,11 +48,8 @@ public class Translate {
 							AutomataState srcState,
 							String input,
 							Set<AutomataState> eclosureStates,
-							Queue<List<AutomataState>> processStates) {
+							List<List<AutomataState>> processStates) {
 		List<AutomataState> setStates = new ArrayList<>(eclosureStates);
-		
-		System.out.println("eclosure States " + input);
-		printSetState(setStates);
 		
 		int existingID = existingState(processStates, setStates);
 		if( existingID == -1 ) {
@@ -112,24 +98,15 @@ public class Translate {
 		return false;
 	}
 	
-	private static int existingState(Queue<List<AutomataState>> processStates, List<AutomataState> newState) {
+	private static int existingState(List<List<AutomataState>> processStates, List<AutomataState> newState) {
 		for( List<AutomataState> tableState : processStates ) {
 			if( tableState.size() - 1 != newState.size() )
 				continue;
-			for( int i = 0; i < newState.size(); i++ )
+			for( int i = 0; i < newState.size(); i++ ) {
 				if( !tableState.get(i).equals(newState.get(i)) ) break;
 				else if( i == newState.size() - 1 ) return tableState.get(i+1).getID();
+			}
 		}
 		return -1;
-	}
-	
-	public static void printSetState(Collection<AutomataState> setStates) {
-		for( AutomataState state : setStates )
-			System.out.println(printState(state));
-		System.out.println("<----->");
-	}
-	
-	private static String printState(AutomataState state) {
-		return "" + state.getID();		
 	}
 }
