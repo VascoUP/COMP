@@ -44,4 +44,14 @@ public class CProgram implements ProgramMaker {
 	        e.printStackTrace();
 		}  
 	}
+
+
+	private void writeCPPIncludes(StringBuilder text) {
+		text.append("#include <iostream>\n")
+		.append("#include <map>\n")
+		.append("#include <set>\n")
+		.append("\nusing namespace std;\n");
+	}
+
+	
 }
