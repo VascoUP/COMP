@@ -14,6 +14,7 @@ public class reg2auto {
     
 		try {
 		  SimpleNode n = parser.Start();
+		  n.dump("");
 		  AutomataTable table = GenerateENFA.enfa(n);
 		  System.out.println(PrintAutomata.getString(table));
 		  AutomataTable dfatable = Translate.getDFA(table);
@@ -70,19 +71,14 @@ SimpleNode Start() : {}
 
 void Expression() : {}
 {
- 	ExpressionType() [PipeExpression() | Expression()]
-}
-
-void PipeExpression() : {}
-{
-	< PIPE > Expression()
+ 	ExpressionType() (< PIPE > ExpressionType())* 
 }
 
 void ExpressionType() : {}
 {
-	Terminal()			[Qualifier()]
+	(Terminal()			[Qualifier()]
 | 	ParenthesisExp()	[Qualifier()]
-| 	RangeExp() 			[Qualifier()]
+| 	RangeExp() 			[Qualifier()]) [ExpressionType()]
 }
 
 void ParenthesisExp() : {}

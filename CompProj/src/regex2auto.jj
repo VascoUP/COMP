@@ -18,6 +18,7 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
     
 		try {
 		  SimpleNode n = parser.Start();
+		  n.dump("");
 		  AutomataTable table = GenerateENFA.enfa(n);
 		  System.out.println(PrintAutomata.getString(table));
 		  AutomataTable dfatable = Translate.getDFA(table);
@@ -111,7 +112,7 @@ void Expression() : {/*@bgen(jjtree) Expression */
 {/*@bgen(jjtree) Expression */
         try {
 /*@egen*/
- 	ExpressionType() [PipeExpression() | Expression()]/*@bgen(jjtree)*/
+ 	ExpressionType() (< PIPE > ExpressionType())*/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -131,38 +132,7 @@ void Expression() : {/*@bgen(jjtree) Expression */
             jjtree.closeNodeScope(jjtn000, true);
           }
         }
-/*@egen*/
-}
-
-void PipeExpression() : {/*@bgen(jjtree) PipeExpression */
-  SimpleNode jjtn000 = new SimpleNode(JJTPIPEEXPRESSION);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/}
-{/*@bgen(jjtree) PipeExpression */
-        try {
-/*@egen*/
-	< PIPE > Expression()/*@bgen(jjtree)*/
-        } catch (Throwable jjte000) {
-          if (jjtc000) {
-            jjtree.clearNodeScope(jjtn000);
-            jjtc000 = false;
-          } else {
-            jjtree.popNode();
-          }
-          if (jjte000 instanceof RuntimeException) {
-            throw (RuntimeException)jjte000;
-          }
-          if (jjte000 instanceof ParseException) {
-            throw (ParseException)jjte000;
-          }
-          throw (Error)jjte000;
-        } finally {
-          if (jjtc000) {
-            jjtree.closeNodeScope(jjtn000, true);
-          }
-        }
-/*@egen*/
+/*@egen*/ 
 }
 
 void ExpressionType() : {/*@bgen(jjtree) ExpressionType */
@@ -173,9 +143,9 @@ void ExpressionType() : {/*@bgen(jjtree) ExpressionType */
 {/*@bgen(jjtree) ExpressionType */
         try {
 /*@egen*/
-	Terminal()			[Qualifier()]
+	(Terminal()			[Qualifier()]
 | 	ParenthesisExp()	[Qualifier()]
-| 	RangeExp() 			[Qualifier()]/*@bgen(jjtree)*/
+| 	RangeExp() 			[Qualifier()]) [ExpressionType()]/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);

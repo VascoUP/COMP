@@ -1,6 +1,7 @@
 package automata;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -46,6 +47,27 @@ public class AutomataTableOperations {
 
 		nTable = joinTables(nTable, first, joinStates);
 		nTable = joinTables(nTable, second, joinStates);
+
+		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
+		endTable.addState(true, true);
+		nTable = join(nTable, endTable);
+
+		return nTable;
+	}
+	
+	public static AutomataTable or(List<AutomataTable> tables) {
+		if( tables.size() == 1 )
+			return tables.get(0);
+		
+		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
+
+		AutomataState firstState = new AutomataState(1, true, false);
+		nTable.addState(firstState);
+		AutomataState[] joinStates = new AutomataState[1];
+		joinStates[0] = firstState;
+
+		for( AutomataTable t : tables )
+			nTable = joinTables(nTable, t, joinStates);			
 
 		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
 		endTable.addState(true, true);
