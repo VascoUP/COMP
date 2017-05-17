@@ -37,14 +37,18 @@ public class CProgram implements ProgramMaker {
 		FileWriter f2;
 
 		try {
-		    f2 = new FileWriter(fnew,false);
-		    f2.write(code);
-		    f2.close();
+			f2 = new FileWriter(fnew,false);
+			f2.write(code);
+			f2.close();
 		} catch (IOException e) {
-	        e.printStackTrace();
+			e.printStackTrace();
 		}  
 	}
 
+	private void writeCPPFile(StringBuilder text) {
+		writeCPPIncludes(text);
+
+	}
 
 	private void writeCPPIncludes(StringBuilder text) {
 		text.append("#include <iostream>\n")
@@ -53,5 +57,5 @@ public class CProgram implements ProgramMaker {
 		.append("\nusing namespace std;\n");
 	}
 
-	
+
 }
