@@ -43,4 +43,14 @@ public class JavaProgram implements ProgramMaker {
 		}  
 	}
 
+	private void writeJavaComments(StringBuilder text) {
+		text.append("\n\t/*\n\n");
+		text.append(toString());
+		text.append("\n\t*/\n");
+	}
+
+	private void writeJavaImports(StringBuilder text) {
+		text.append("import java.util.HashMap;\nimport java.util.HashSet;\nimport java.util.Map;\nimport java.util.NoSuchElementException;\nimport java.util.Scanner;\nimport java.util.Set;\n");
+	}
+
 }
