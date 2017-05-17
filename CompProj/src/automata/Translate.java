@@ -64,10 +64,6 @@ public class Translate {
 				if (inputStateT.getKey() == AutomataGrammar.emptyToken)
 					continue;
 				Set<AutomataState> inputT = transitions.get(inputStateT.getKey());
-
-				System.out.println("From: " + state.getID() + " with: " + inputStateT.getKey());
-				System.out.println("To: ");
-				printStates(inputStateT.getValue());
 				
 				if (inputT == null) {
 					inputT = new HashSet<>();
@@ -77,25 +73,10 @@ public class Translate {
 					inputT.addAll(inputStateT.getValue());
 					transitions.put(inputStateT.getKey(), inputT);
 				}
-
-				System.out.println("After add: ");
-				printStates(inputStateT.getValue());
-				printStates(transitions.get(inputStateT.getKey()));
 			}
 		}
 
-		System.out.println("From: ");
-		printStates(setStates);
-		for (Entry<String, Set<AutomataState>> inputStateT : transitions.entrySet()) {
-			System.out.println("Transitions with: " + inputStateT.getKey());
-			printStates(inputStateT.getValue());
-		}
 		return transitions;
-	}
-
-	private static void printStates(Collection<AutomataState> states) {
-		for(AutomataState state : states)
-			System.out.println("	" + state.getID());
 	}
 	
 	private static AutomataState addState(AutomataTable table, List<AutomataState> setStates, boolean start,

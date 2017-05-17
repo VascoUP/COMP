@@ -30,8 +30,6 @@ public class JavaProgram implements ProgramMaker {
 	@Override
 	public void toFile() {
 		String code = code();
-		System.out.println(code);
-		System.out.println(PrintAutomata.getString(table));
 		
 		File fnew = new File(fileURL.getPath() + fileName);
 		FileWriter f2;

@@ -19,7 +19,6 @@ public class AutomataTableOperations {
 					HashMap<String, Set<AutomataState>>> entries : 
 				second.getStateGrammar().entrySet()) {
 			
-			System.out.println("Adding " + entries.getKey());
 			int sID;
 			if (secondStartState != entries.getKey()) {
 				entries.getKey().setStart(false);

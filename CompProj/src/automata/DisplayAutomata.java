@@ -23,7 +23,6 @@ public class DisplayAutomata {
 		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
 			AutomataState key = state.getKey();
 			HashMap<String, Set<AutomataState>> value = state.getValue();
-			System.out.println("New edges " + stateToString(key));
 			
 			addNode(key, states, graph);
 			
