@@ -74,11 +74,10 @@ public class CProgram implements ProgramMaker {
 
 	private void writeCPPMain(StringBuilder text) {
 		text.append("\nint main() {\n");
-		text.append("");
 		text.append("\n\tstring str;\n");
 		text.append("\n\twhile(str != \"quit\") {\n");
 		text.append("\t\tcin >> str;\n");
-		text.append("\n\t\tif(matches(str))\n");
+		text.append("\n\t\tif(validate(str))\n");
 		text.append("\t\t\tcout << \"DFA match\" << endl;\n");
 		text.append("\t\telse\n");
 		text.append("\t\t\tcout << \"DFA doesn't match\" << endl;\n");
