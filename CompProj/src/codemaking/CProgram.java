@@ -47,6 +47,7 @@ public class CProgram implements ProgramMaker {
 
 	private void writeCPPFile(StringBuilder text) {
 		writeCPPIncludes(text);
+		writeCPPvalidate(text);
 		writeCPPMain(text);
 	}
 
