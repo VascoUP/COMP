@@ -50,7 +50,22 @@ public class JavaProgram implements ProgramMaker {
 	}
 
 	private void writeJavaImports(StringBuilder text) {
-		text.append("import java.util.HashMap;\nimport java.util.HashSet;\nimport java.util.Map;\nimport java.util.NoSuchElementException;\nimport java.util.Scanner;\nimport java.util.Set;\n");
+		text.append("import java.util.HashMap;\n");
+		text.append("import java.util.HashSet;\n");
+		text.append("import java.util.Map;\n");
+		text.append("import java.util.NoSuchElementException;\n");
+		text.append("import java.util.Scanner;\n");
+		text.append("import java.util.Set;\n");
+	}
+
+	public void writeJavavalidator(StringBuilder text){
+		text.append("public static boolean validator(String str) {\n");
+		/* Not sure about this... so its commented*/
+		/*text.append("\tint state =").append(Integer.table.getStartState()).append(", nextstate\n");*/
+		text.append("\t\tfor(Character c: str.toCharArray()) {\n");
+		text.append("\t\t\ttry {\n");
+		text.append("\t\t\tif(){\n");
+		text.append("\t\t\t} catch(NullPointerException e) {\n");
 	}
 
 }
