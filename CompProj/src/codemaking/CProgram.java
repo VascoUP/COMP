@@ -47,14 +47,15 @@ public class CProgram implements ProgramMaker {
 
 	private void writeCPPFile(StringBuilder text) {
 		writeCPPIncludes(text);
-
+		writeCPPMain(text);
 	}
 
 	private void writeCPPIncludes(StringBuilder text) {
 		text.append("#include <iostream>\n")
-		.append("#include <map>\n")
-		.append("#include <set>\n")
-		.append("\nusing namespace std;\n");
+		.append("#include <stdio.h>\n")
+		.append("#include <string>\n")
+		.append("#include <vector>\n")
+		.append("using namespace std;\n\n");
 	}
 
 	private void writeCPPMain(StringBuilder text) {
