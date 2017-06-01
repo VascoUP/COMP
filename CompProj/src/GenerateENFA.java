@@ -106,8 +106,9 @@ public class GenerateENFA {
 			SimpleNode secondInput= (SimpleNode) ((SimpleNode) node.children[1]).children[0];
 			String[] rangeInputs = 
 					AutomataGrammar.getRangeInput(firstInput.getTerminal(), secondInput.getTerminal());
-			for( String input : rangeInputs )
-				table.stateSetTransition(fromState, input, toState);
+			/*for( String input : rangeInputs )
+				table.stateSetTransition(fromState, input, toState);*/
+			table.stateSetArrTransition(fromState, toState, rangeInputs);
 		} else
 			table.stateSetTransition(fromState, firstInput.getTerminal(), toState);
 	}
@@ -127,7 +128,7 @@ public class GenerateENFA {
 
 	public static void terminal(SimpleNode node, AutomataTable table, int connectID) {
 		System.out.println("terminal: Node " + node.toString());
-		if (node.children.length != 0) {
+		if (node.children != null && node.children.length != 0) {
 			node = (SimpleNode) node.children[0]; // T1
 			node = (SimpleNode) node.children[0]; // Letter or Number
 		}

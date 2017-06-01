@@ -60,6 +60,11 @@ public class SimpleNode implements Node {
 		return (children == null) ? 0 : children.length;
 	}
 
+	@Override
+	public int getId() {
+		return id;
+	}
+
 	public void jjtSetValue(Object value) {
 		this.value = value;
 	}

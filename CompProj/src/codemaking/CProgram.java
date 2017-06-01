@@ -60,7 +60,7 @@ public class CProgram implements ProgramMaker {
 	}
 
 	public void writeCPPvalidate(StringBuilder text){
-		text.append("\nbool validate(string exp, vector<vector<int>>edges){\n"});
+		text.append("\nbool validate(string exp, vector<vector<int>>edges){\n");
 		text.append("\tint curr_state = edges[0][0];\n");
 		text.append("\tfor(int i=0; i<exp.size();i++){\n");
 		text.append("\t\tint caracter = (int)exp[i];\n");

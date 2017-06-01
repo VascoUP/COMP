@@ -1,42 +1,19 @@
 package automata;
 
-
 public class AutomataGrammar {
-	//private static final URL grammarFile = AutomataTable.class.getClassLoader().getResource("assets/Grammar");
+	public enum StringGroup {LOWERCASE, UPPERCASE, NUMBER, EPSILON, NONEXISTING};
 	
-	public static enum StringGroup {LOWERCASE, UPPERCASE, NUMBER, EPSILON, NONEXISTING};
-	
-	public static final int lowercaseMin = 97;
-	public static final int lowercaseMax = 122;
-	public static final int uppercaseMin = 65;
-	public static final int uppercaseMax = 90;
-	public static final int numberMin = 48;
-	public static final int numberMax = 57;
+	private static final int lowercaseMin = 97;
+	private static final int lowercaseMax = 122;
+	private static final int uppercaseMin = 65;
+	private static final int uppercaseMax = 90;
+	private static final int numberMin = 48;
+	private static final int numberMax = 57;
 
-	public static final String emptyToken = "epsilon";
-	//public static final ArrayList<String> grammar = getGrammarFromFile();
+	static final String emptyToken = "epsilon";
+	static final String anyInput = "anyInput";
 
-	/*private static final ArrayList<String> getGrammarFromFile() {
-		ArrayList<String> nList = new ArrayList<>();
-
-		try {
-			FileReader fileReader = new FileReader(grammarFile.getFile());
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			String line = null;
-			while ((line = bufferedReader.readLine()) != null)
-				nList.add(line);
-			bufferedReader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-
-		nList.add(emptyToken);
-		return nList;
-	}*/
-	
-	public static StringGroup getGroup(String entry) {
+	private static StringGroup getGroup(String entry) {
 		if( entry.equals(emptyToken) )
 			return StringGroup.EPSILON;
 		

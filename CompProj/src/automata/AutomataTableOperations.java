@@ -144,7 +144,10 @@ public class AutomataTableOperations {
 	
 	public static int terminal(AutomataTable table, String input, int fromState) {
 		int toState = table.addState(false, true);
-		table.stateSetTransition(fromState, input, toState);
+		if( input.equals(".") )
+			table.stateSetAllTransitions(fromState, toState);
+		else
+			table.stateSetTransition(fromState, input, toState);
 		return toState;
 	}
 }

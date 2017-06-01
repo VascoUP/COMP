@@ -102,7 +102,27 @@ public class AutomataTable {
 		return id;
 	}
 
-	
+	private boolean verifyAddTransition(AutomataState fromState, AutomataState toState) {
+        HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(fromState);
+        Set<AutomataState> states = transitions.get(AutomataGrammar.anyInput);
+        return states != null && states.contains(toState);
+    }
+
+	private boolean stateAddTransition(AutomataState fromState, AutomataState toState, String input) {
+	    if(verifyAddTransition(fromState, toState))
+	        return false;
+
+        HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(fromState);
+        Set<AutomataState> inputT = transitions.get(input);
+        if (inputT == null) {
+            inputT = new HashSet<>();
+            inputT.add(toState);
+            transitions.put(input, inputT);
+        } else
+            inputT.add(toState);
+        return true;
+    }
+
 	public boolean stateCopyTransitions(AutomataState state, HashMap<String, Set<AutomataState>> copy) {
 		if (state == null)
 			return false;
@@ -127,60 +147,25 @@ public class AutomataTable {
 	}
 
 	public boolean stateSetTransition(AutomataState state, String input, AutomataState resultingState) {
-		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
-			return false;
-
-		HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(state);
-
-		Set<AutomataState> inputT = transitions.get(input);
-		if (inputT == null) {
-			inputT = new HashSet<>();
-			inputT.add(resultingState);
-			transitions.put(input, inputT);
-		} else
-			inputT.add(resultingState);
-
-		return true;
+		return stateAddTransition(state, resultingState, input);
 	}
 
 	public boolean stateSetEmptyTransition(AutomataState state, AutomataState resultingState) {
-		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state) || type != AutomataType.E_NFA)
-			return false;
-		stateSetTransition(state, AutomataGrammar.emptyToken, resultingState);
-		return true;
-	}
+        return type == AutomataType.E_NFA && stateSetTransition(state, AutomataGrammar.emptyToken, resultingState);
+    }
 
 	public boolean stateSetArrTransition(AutomataState state, AutomataState resultingState, String[] arr) {
-		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
-			return false;
-
 		HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(state);
-		for( String str : arr ) {
-			Set<AutomataState> list = transitions.get(str);
-			if( list == null ) {
-				list = new HashSet<>();
-				list.add(resultingState);
-				transitions.put(str, list);
-			} else 
-				list.add(resultingState);
-		}
-
+		for( String str : arr )
+		    if( !stateSetTransition(state, str, resultingState) )
+		        break;
 		return true;
 	}
 	
 	public boolean stateSetAllTransitions(AutomataState state, AutomataState resultingState) {
-		if (!stateGrammar.containsKey(resultingState) || !stateGrammar.containsKey(state))
-			return false;
-
-		ArrayList<String> arrList = new ArrayList<>();
-		List<String> lowercase = Arrays.asList(AutomataGrammar.getRangeInput("a", "z"));
-		List<String> uppercase = Arrays.asList(AutomataGrammar.getRangeInput("A", "Z"));
-		List<String> numbers = Arrays.asList(AutomataGrammar.getRangeInput("0", "9"));
-		arrList.addAll(lowercase);
-		arrList.addAll(uppercase);
-		arrList.addAll(numbers);
-		
-		return stateSetArrTransition(state, resultingState, arrList.toArray(new String[arrList.size()]));
+        HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(state);
+        transitions.clear();
+        return stateSetTransition(state, AutomataGrammar.anyInput, resultingState);
 	}
 
 	public boolean stateCopyTransitions(int id, HashMap<String, Set<AutomataState>> copy) {
@@ -205,4 +190,10 @@ public class AutomataTable {
 		AutomataState sState = getStateByID(dstID);
 		return stateSetAllTransitions(fState, sState);
 	}
+
+    public boolean stateSetArrTransition(int id, int dstID, String[] arr) {
+        AutomataState fState = getStateByID(id);
+        AutomataState sState = getStateByID(dstID);
+        return stateSetArrTransition(fState, sState, arr);
+    }
 }
