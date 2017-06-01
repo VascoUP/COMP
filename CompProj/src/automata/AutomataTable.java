@@ -29,6 +29,10 @@ public class AutomataTable {
 		return stateGrammar;
 	}
 
+	public int getAutomataSize() {
+		return stateGrammar.size();
+	}
+
 	public AutomataState getStateByID(int id) {
 		for (AutomataState state : stateGrammar.keySet())
 			if (state.getID() == id)
@@ -87,6 +91,11 @@ public class AutomataTable {
 		return processedStates;
 	}
 
+
+	public void removeState(int id) {
+		AutomataState state = getStateByID(id);
+		stateGrammar.remove(state);
+	}
 	
 	public int addState(boolean start, boolean accept) {
 		int id = stateID;

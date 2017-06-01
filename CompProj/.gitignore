@@ -1,3 +1,5 @@
 /bin/
 /src/*.class
 /src/*/*.class
+/.ideia/
+/.settings/
