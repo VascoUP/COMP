@@ -43,6 +43,34 @@ public class JavaProgram implements ProgramMaker {
 		}  
 	}
 
+	private void writeJavaFile(StringBuilder text){
+		text.append("public class RegIdent {\n");
+		writeJavaImports(text);
+		writeJavaComments(text);
+		writeJavavalidator(text);
+		writeJavaMain(text);
+		text.append("}");
+	}
+
+	private void writeJavaMain(StringBuilder text){
+		text.append("\n\tpublic static void main(String[] args) {\n");
+		text.append("\n\t\tString string;\n");
+		text.append("\t\tScanner input = new Scanner(System.in);\n");
+		text.append("\n\t\twhile(true) {\n");
+		text.append("\t\t\ttry {\n");
+		text.append("\t\t\t\tstring = input.nextLine();\n");
+		text.append("\t\t\t} catch (NoSuchElementException e) {\n");
+		text.append("\t\t\t\tbreak;\n");
+		text.append("\t\t\t}\n");
+		text.append("\n\t\t\tif(validator(string))\n");
+		text.append("\t\t\t\tSystem.out.println(\"DFA matches!\");\n");
+		text.append("\t\t\telse\n");
+		text.append("\t\t\t\tSystem.out.println(\"DFA does not match!\");\n");
+		text.append("\t\t}\n");
+		text.append("\n\t\tinput.close();\n");
+		text.append("\t}\n");
+	}
+
 	private void writeJavaComments(StringBuilder text) {
 		text.append("\n\t/*\n\n");
 		text.append(toString());
@@ -59,13 +87,26 @@ public class JavaProgram implements ProgramMaker {
 	}
 
 	public void writeJavavalidator(StringBuilder text){
+		AutomataState state;
+		AutomataState[] acceptStates = table.getAcceptStates();
 		text.append("public static boolean validator(String str) {\n");
-		/* Not sure about this... so its commented*/
-		/*text.append("\tint state =").append(Integer.table.getStartState()).append(", nextstate\n");*/
-		text.append("\t\tfor(Character c: str.toCharArray()) {\n");
-		text.append("\t\t\ttry {\n");
-		text.append("\t\t\tif(){\n");
-		text.append("\t\t\t} catch(NullPointerException e) {\n");
+		/*text.append("\tint state =").append(Integer.table.getStartState()).append(", nextState;\n");*/
+		text.append("\tboolean finalStatePresent = false;\n");
+		text.append("\tfor(Character c: str.toCharArray()) {\n");
+		/*text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");*/
+		text.append("\t\tif(nextState == null || nextState == -1)\n");
+		text.append("\t\t\treturn false;\n");
+		text.append("\t}");
+
+		text.append("\tfor(int fState: ){\n");
+		text.append("\t\tif(nextState == fState)\n");
+		text.append("\t\t\tfinalStatePresent = true;\n");
+		text.append("\t}");
+		text.append("\tif(finalStatePresent)\n");
+		text.append("\t\treturn true;\n");
+		text.append("\telse\n");
+		text.append("\t\treturn false;\n");
+		text.append("}\n");
 	}
 
 }
