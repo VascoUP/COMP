@@ -66,6 +66,13 @@ public class AutomataTable {
 		return hash.get(input);
 	}
 
+	public Set<AutomataState> getStateTransitions(AutomataState state) {
+	    HashMap<String, Set<AutomataState>> inputTransitions = stateGrammar.get(state);
+	    Set<AutomataState> transitions = new HashSet<>();
+	    for(Set<AutomataState> iT : inputTransitions.values())
+	        transitions.addAll(iT);
+	    return transitions;
+    }
 
 	public SortedSet<AutomataState> getEClosure(AutomataState state) {
 		List<AutomataState> states = new ArrayList<>();
@@ -110,6 +117,7 @@ public class AutomataTable {
 		stateGrammar.put(state, new HashMap<>());
 		return id;
 	}
+
 
 	private boolean verifyAddTransition(AutomataState fromState, AutomataState toState) {
         HashMap<String, Set<AutomataState>> transitions = stateGrammar.get(fromState);

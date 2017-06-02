@@ -108,4 +108,78 @@ public class DFAMinimizer {
         for (Point pair : S.get(i).get(j))
             _dist(D, S, pair, visited);
     }
+
+    private void mergeStates(AutomataTable dfa, boolean[][] D, List<List<HashSet<Point>>> S) {
+        ArrayList<AutomataState> newStates = new ArrayList<>();
+        HashSet<Integer> newAcceptStates = new HashSet<>();
+        HashMap<Integer, Integer> merged = new HashMap<>();
+        ArrayList<ArrayList<Integer>> mergeGroups = new ArrayList<>();
+        for(int i = 0; i < D.length; i++) {
+            if(merged.get(i) != null)
+                continue;
+
+            AutomataState state = dfa.getStateByID(i);
+
+            ArrayList<Integer> toMerger = new ArrayList<>();
+            for(int j = i+1; j < D.length; j++) {
+                if(!D[i][j]) {
+                    toMerger.add(j);
+                    merged.put(i,j);
+                }
+            }
+
+            Set<AutomataState> transitions = dfa.getStateTransitions(state);
+            int j = 0;
+            for(AutomataState dst : transitions) {
+                Integer transition = dst.getID();
+                if(merged.containsKey(transition))
+                    dst.setID(j);
+                j++;
+            }
+
+            if(dfa.getStateByID(i).getAccept())
+                newAcceptStates.add(i);
+
+            toMerger.add(i);
+            mergeGroups.add(toMerger);
+            newStates.add(state);
+        }
+
+        renumberStates(dfa, mergeGroups, newAcceptStates);
+
+        rebuildDFA(dfa, newStates, newAcceptStates);
+    }
+
+    private void rebuildDFA(AutomataTable dfa, ArrayList<AutomataState> newStates, HashSet<Integer> newAcceptStates) {
+        AutomataState[] newStatesArray = new AutomataState[newStates.size()];
+        newStatesArray = newStates.toArray(newStatesArray);
+        /*
+        states = newStatesArray;
+        acceptStates = newAcceptStates;
+         */
+    }
+    
+    private void renumberStates(AutomataTable dfa, ArrayList<ArrayList<Integer>> groups, HashSet<Integer> newAcceptStates) {
+        for(int i = 0; i < groups.size(); i++) {
+            ArrayList<Integer> group = groups.get(i);
+            for(AutomataState state : dfa.getStateGrammar().keySet()) {
+                Set<AutomataState> transitions = dfa.getStateTransitions(state);
+                int j = 0;
+                for(AutomataState dst : transitions) {
+                    Integer transition = dst.getID();
+                    if(group.contains(transition))
+                        dst.setID(j);
+                    j++;
+                }
+            }
+            for (Integer state : new HashSet<>(newAcceptStates)) {
+                if (group.contains(state)) {
+                    newAcceptStates.remove(state);
+                    newAcceptStates.add(i);
+                }
+            }
+        }
+    }
+
+
 }
