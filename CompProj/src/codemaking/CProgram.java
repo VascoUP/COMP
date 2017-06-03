@@ -3,6 +3,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import automata.AutomataState;
 import automata.AutomataTable;
@@ -46,48 +49,100 @@ public class CProgram implements ProgramMaker {
 		}  
 	}
 
-	private void writeCFile(StringBuilder text) {
-		writeCIncludes(text);
-		writeCValidate(text);
-		writeCMain(text);
+	private String writeCFile(StringBuilder text) {
+		StringBuilder builder = new StringBuilder();
+		
+		writeCIncludes(builder);
+		writeCValidate(builder);
+		writeCMain(builder);
+		
+		return new String(builder);
 	}
 
 	private void writeCIncludes(StringBuilder text) {
-		text.append("#include <iostream>\n")
-		.append("#include <stdio.h>\n")
-		.append("#include <string>\n")
-		.append("#include <vector>\n");
+		text.append("#include <stdio.h>\n");
 	}
 
 	public void writeCValidate(StringBuilder text){
-		AutomataState[] acceptStates = table.getAcceptStates();
+		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
+
+		int hashSize = stateGrammar.size();
 		
-		text.append("\nbool validate(string exp, vector<vector<int>>edges){\n");
-		text.append("\tint curr_state = edges[0][0];\n");
-		text.append("\tint i = 0;\n");
-		text.append("\t\tint caracter = (int)exp[0];\n");
-		text.append("\tfor(i ; i < exp.size(); i++){\n");
-		text.append("\t\tif (edges[curr_state][caracter] != -1){\n");
-		text.append("\t\t\tcurr_state = edges[curr_state][caracter];\n");
-		text.append("\t\tcaracter = (int)exp[i];\n");
-		text.append("\t}\n");
+		text.append("\nint validate(char *exp, int edges[");
+		text.append(hashSize);
+		text.append("][256]){\n");
+		text.append("\tint currentState = edges[0][0];\n");
+		text.append("\tint i;\n");
+		text.append("\t\tint character = (int)exp[0];\n");
+		text.append("\t\tint size = sizeof(exp);\n");
+		text.append("\tfor(i = 0 ; i < size; i++){\n");
+		text.append("\t\tif(edges[currentState][character] != -1){\n");
+		text.append("\t\t\tcurrentState = edges[currentState][character];\n");
+		text.append("\t\t\tcharacter = (int)exp[i];\n");
+		text.append("\t\t}\n");
 		text.append("\t\telse\n");
-		text.append("\t\t\treturn false;\n");
+		text.append("\t\t\treturn 0;\n");
 		text.append("\t}\n");
-		text.append("\treturn true;\n");
+		text.append("\treturn 1;\n");
 		text.append("}");
 	}
 
 	private void writeCMain(StringBuilder text) {
 		text.append("\nint main(int argc, char* argv[]) {\n");
-		text.append("\n\tstring str;\n");
-		text.append("\n\twhile(str != \"quit\") {\n");
-		text.append("\t\tscanf(\"%s\", str);\n");
-		text.append("\n\t\tif(validate(str))\n");
-		text.append("\t\t\tprintf(\"%s\", \"DFA match\n\");\n");
-		text.append("\t\telse\n");
-		text.append("\t\t\tprintf(\"%s\", \"DFA doesn't match\n\");\n");
+		text.append("\n\tif(argc != 2){\n");
+		text.append("\n\t\tprintf(\"%s\", \"Wrong number of arguments\n\");\n");
+		text.append("\t\t\treturn -1;\n");
 		text.append("\t}\n");
+		
+		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
+
+		int hashSize = stateGrammar.size();
+		
+		text.append("\tint edges[");
+		text.append(hashSize);
+		text.append("][256];\n");
+		
+		int var = 0;
+		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
+			AutomataState key = state.getKey();
+			HashMap<String, Set<AutomataState>> value = state.getValue();
+		
+			text.append("\tint map[256] = {");
+			
+			if(key.equals("anyInput")){
+				text.append(key.getID());
+				text.append(" , ");
+			}
+			else{
+				int j;
+				for( j = 0; j < 256 ; j++){
+					for (Entry<String, Set<AutomataState>> entries : value.entrySet()) {
+						if(entries.getValue().isEmpty()){
+							text.append(" -1 ");
+							text.append(" , ");	
+						}
+						else{
+							for (AutomataState inputResult : entries.getValue()) {
+								text.append(inputResult.getID());
+								text.append(" , ");	
+							}
+						}
+					}
+				}
+			}
+			
+			text.append("}\n");
+			text.append("edges[");
+			text.append(var);
+			text.append("] = map");
+			
+			var++;
+		}
+				
+		text.append("\n\tif(validate(argv[1], edges) == 1)");
+		text.append("\t\tprintf(\"%s\", \"DFA match\n\");\n");
+		text.append("\telse\n");
+		text.append("\t\t\tprintf(\"%s\", \"DFA doesn't match\n\");\n");
 		text.append("\n\treturn 0;\n");
 		text.append("}\n");
 	}

@@ -88,18 +88,21 @@ public class JavaProgram implements ProgramMaker {
 	}
 
 	public void writeJavavalidator(StringBuilder text){
-		AutomataState state;
+		AutomataState state = table.getStartState();
 		AutomataState[] acceptStates = table.getAcceptStates();
+		int[] finalStatesID;
+		for(AutomataState a : acceptStates)
+			finalStatesID.add(a.getID());
+
 		text.append("public static boolean validator(String str) {\n");
-		/*text.append("\tint state =").append(Integer.table.getStartState()).append(", nextState;\n");*/
+		text.append("\tint state =").append(table.getStartState().getID()).append(", nextState;\n");
 		text.append("\tboolean finalStatePresent = false;\n");
 		text.append("\tfor(Character c: str.toCharArray()) {\n");
-		/*text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");*/
+		text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");
 		text.append("\t\tif(nextState == null || nextState == -1)\n");
 		text.append("\t\t\treturn false;\n");
 		text.append("\t}");
-
-		text.append("\tfor(int fState: ){\n");
+		text.append("\tfor(int").append(finalStatesID).append(": fState){\n");
 		text.append("\t\tif(nextState == fState)\n");
 		text.append("\t\t\tfinalStatePresent = true;\n");
 		text.append("\t}");
