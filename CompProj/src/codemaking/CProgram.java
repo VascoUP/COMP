@@ -3,6 +3,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import automata.AutomataState;
 import automata.AutomataTable;
@@ -85,6 +88,51 @@ public class CProgram implements ProgramMaker {
 		text.append("\t\t\treturn -1;\n");
 		text.append("\t}\n");
 		
+		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
+
+		int hashSize = stateGrammar.size();
+		
+		text.append("\tint edges[");
+		text.append(hashSize);
+		text.append("][256];\n");
+		
+		int var = 0;
+		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
+			AutomataState key = state.getKey();
+			HashMap<String, Set<AutomataState>> value = state.getValue();
+		
+			text.append("\tint map[256] = {");
+			
+			if(key.equals("anyInput")){
+				text.append(key.getID());
+				text.append(" , ");
+			}
+			else{
+				int j;
+				for( j = 0; j < 256 ; j++){
+					for (Entry<String, Set<AutomataState>> entries : value.entrySet()) {
+						if(entries.getValue().isEmpty()){
+							text.append(" -1 ");
+							text.append(" , ");	
+						}
+						else{
+							for (AutomataState inputResult : entries.getValue()) {
+								text.append(inputResult.getID());
+								text.append(" , ");	
+							}
+						}
+					}
+				}
+			}
+			
+			text.append("}\n");
+			text.append("edges[");
+			text.append(var);
+			text.append("] = map");
+			
+			var++;
+		}
+				
 		text.append("\n\tif(validate(argv[1], int edges[NUM][256]) == 1)");
 		text.append("\t\tprintf(\"%s\", \"DFA match\n\");\n");
 		text.append("\telse\n");
