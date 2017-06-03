@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
+import automata.AutomataState;
 import automata.AutomataTable;
 import automata.PrintAutomata;
 

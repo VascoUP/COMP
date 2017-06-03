@@ -37,7 +37,7 @@ public class CProgram implements ProgramMaker {
 		FileWriter f2;
 
 		try {
-			f2 = new FileWriter(fnew,false);
+			f2 = new FileWriter(fnew, false);
 			f2.write(code);
 			f2.close();
 		} catch (IOException e) {
@@ -45,21 +45,20 @@ public class CProgram implements ProgramMaker {
 		}  
 	}
 
-	private void writeCPPFile(StringBuilder text) {
-		writeCPPIncludes(text);
-		writeCPPvalidate(text);
-		writeCPPMain(text);
+	private void writeCFile(StringBuilder text) {
+		writeCIncludes(text);
+		writeCValidate(text);
+		writeCMain(text);
 	}
 
-	private void writeCPPIncludes(StringBuilder text) {
+	private void writeCIncludes(StringBuilder text) {
 		text.append("#include <iostream>\n")
 		.append("#include <stdio.h>\n")
 		.append("#include <string>\n")
-		.append("#include <vector>\n")
-		.append("using namespace std;\n\n");
+		.append("#include <vector>\n");
 	}
 
-	public void writeCPPvalidate(StringBuilder text){
+	public void writeCValidate(StringBuilder text){
 		text.append("\nbool validate(string exp, vector<vector<int>>edges){\n");
 		text.append("\tint curr_state = edges[0][0];\n");
 		text.append("\tfor(int i=0; i<exp.size();i++){\n");
@@ -73,15 +72,15 @@ public class CProgram implements ProgramMaker {
 		text.append("}");
 	}
 
-	private void writeCPPMain(StringBuilder text) {
+	private void writeCMain(StringBuilder text) {
 		text.append("\nint main() {\n");
 		text.append("\n\tstring str;\n");
 		text.append("\n\twhile(str != \"quit\") {\n");
-		text.append("\t\tcin >> str;\n");
+		text.append("\t\tscanf('%s', str);\n");
 		text.append("\n\t\tif(validate(str))\n");
-		text.append("\t\t\tcout << \"DFA match\" << endl;\n");
+		text.append("\t\t\tprintf('%s', 'DFA match');\n");
 		text.append("\t\telse\n");
-		text.append("\t\t\tcout << \"DFA doesn't match\" << endl;\n");
+		text.append("\t\t\tprintf('%s', 'DFA doesn't match');\n");
 		text.append("\t}\n");
 		text.append("\n\treturn 0;\n");
 		text.append("}\n");
