@@ -17,7 +17,9 @@ public class reg2auto {
 		  n.dump("");
 		  AutomataTable table = GenerateENFA.enfa(n);
 		  AutomataTable dfatable = Translate.getDFA(table);
-		  //new DFAMinimizer(dfatable);
+		  DFAMinimizer min = new DFAMinimizer(dfatable);
+		  dfatable = min.getDFA();
+		  System.out.println(PrintAutomata.getString(dfatable));
 		  DisplayAutomata.display(dfatable);
 		  //n.dump("");
 		}
