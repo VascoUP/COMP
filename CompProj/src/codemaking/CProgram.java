@@ -76,11 +76,11 @@ public class CProgram implements ProgramMaker {
 		text.append("\nint main() {\n");
 		text.append("\n\tstring str;\n");
 		text.append("\n\twhile(str != \"quit\") {\n");
-		text.append("\t\tscanf('%s', str);\n");
+		text.append("\t\tscanf(\"%s\", str);\n");
 		text.append("\n\t\tif(validate(str))\n");
-		text.append("\t\t\tprintf('%s', 'DFA match');\n");
+		text.append("\t\t\tprintf(\"%s\", \"DFA match\n\");\n");
 		text.append("\t\telse\n");
-		text.append("\t\t\tprintf('%s', 'DFA doesn't match');\n");
+		text.append("\t\t\tprintf(\"%s\", \"DFA doesn't match\n\");\n");
 		text.append("\t}\n");
 		text.append("\n\treturn 0;\n");
 		text.append("}\n");
