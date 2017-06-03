@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
-import automata.AutomataState;
 import automata.AutomataTable;
 import automata.PrintAutomata;
 
@@ -60,26 +59,21 @@ public class CProgram implements ProgramMaker {
 	}
 
 	public void writeCValidate(StringBuilder text){
-		AutomataState[] acceptStates = table.getAcceptStates();
-		
 		text.append("\nbool validate(string exp, vector<vector<int>>edges){\n");
 		text.append("\tint curr_state = edges[0][0];\n");
-		text.append("\tint i = 0;\n");
-		text.append("\t\tint caracter = (int)exp[0];\n");
-		text.append("\tfor(i ; i < exp.size(); i++){\n");
-		text.append("\t\tif (edges[curr_state][caracter] != -1){\n");
+		text.append("\tfor(int i=0; i<exp.size();i++){\n");
+		text.append("\t\tint caracter = (int)exp[i];\n");
+		text.append("\t\tif (edges[curr_state][caracter] != -1)\n");
 		text.append("\t\t\tcurr_state = edges[curr_state][caracter];\n");
-		text.append("\t\tcaracter = (int)exp[i];\n");
-		text.append("\t}\n");
 		text.append("\t\telse\n");
 		text.append("\t\t\treturn false;\n");
-		text.append("\t}\n");
+		text.append("\t{\n");
 		text.append("\treturn true;\n");
 		text.append("}");
 	}
 
 	private void writeCMain(StringBuilder text) {
-		text.append("\nint main(int argc, char* argv[]) {\n");
+		text.append("\nint main() {\n");
 		text.append("\n\tstring str;\n");
 		text.append("\n\twhile(str != \"quit\") {\n");
 		text.append("\t\tscanf(\"%s\", str);\n");
