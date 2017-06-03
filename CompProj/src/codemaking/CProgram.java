@@ -46,10 +46,14 @@ public class CProgram implements ProgramMaker {
 		}  
 	}
 
-	private void writeCFile(StringBuilder text) {
-		writeCIncludes(text);
-		writeCValidate(text);
-		writeCMain(text);
+	private String writeCFile(StringBuilder text) {
+		StringBuilder builder = new StringBuilder();
+		
+		writeCIncludes(builder);
+		writeCValidate(builder);
+		writeCMain(builder);
+		
+		return new String(builder);
 	}
 
 	private void writeCIncludes(StringBuilder text) {
