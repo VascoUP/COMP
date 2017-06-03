@@ -64,7 +64,13 @@ public class CProgram implements ProgramMaker {
 	}
 
 	public void writeCValidate(StringBuilder text){
-		text.append("\nint validate(char *exp, int edges[NUM][256]){\n");
+		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
+
+		int hashSize = stateGrammar.size();
+		
+		text.append("\nint validate(char *exp, int edges[");
+		text.append(hashSize);
+		text.append("][256]){\n");
 		text.append("\tint currentState = edges[0][0];\n");
 		text.append("\tint i;\n");
 		text.append("\t\tint character = (int)exp[0];\n");
@@ -133,7 +139,7 @@ public class CProgram implements ProgramMaker {
 			var++;
 		}
 				
-		text.append("\n\tif(validate(argv[1], int edges[NUM][256]) == 1)");
+		text.append("\n\tif(validate(argv[1], edges) == 1)");
 		text.append("\t\tprintf(\"%s\", \"DFA match\n\");\n");
 		text.append("\telse\n");
 		text.append("\t\t\tprintf(\"%s\", \"DFA doesn't match\n\");\n");
