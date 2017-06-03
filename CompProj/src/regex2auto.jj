@@ -23,6 +23,7 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
 		  AutomataTable dfatable = Translate.getDFA(table);
 		  DFAMinimizer min = new DFAMinimizer(dfatable);
 		  dfatable = min.getDFA();
+		  System.out.println(PrintAutomata.getString(dfatable));
 		  DisplayAutomata.display(dfatable);
 		  //n.dump("");
 		}

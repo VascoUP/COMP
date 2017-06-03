@@ -61,6 +61,7 @@ public class CProgram implements ProgramMaker {
 
 	private void writeCIncludes(StringBuilder text) {
 		text.append("#include <stdio.h>\n");
+		text.append("#include <string.h>\n");
 	}
 
 	public void writeCValidate(StringBuilder text){
@@ -132,9 +133,9 @@ public class CProgram implements ProgramMaker {
 			}
 			
 			text.append("}\n");
-			text.append("edges[");
+			text.append("memcpy(edges[");
 			text.append(var);
-			text.append("] = map");
+			text.append("], map, strlen(map)+1;\n");
 			
 			var++;
 		}
