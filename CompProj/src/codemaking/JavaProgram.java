@@ -36,7 +36,7 @@ public class JavaProgram implements ProgramMaker {
 		FileWriter f2;
 
 		try {
-		    f2 = new FileWriter(fnew,false);
+		    f2 = new FileWriter(fnew, false);
 		    f2.write(code);
 		    f2.close();
 		} catch (IOException e) {
