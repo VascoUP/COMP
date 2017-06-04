@@ -3,23 +3,45 @@ package automata;
 import java.util.*;
 import java.util.List;
 
+/**
+ * 
+ * This class creates the DFA's minimizer
+ *
+ */
 public class DFAMinimizer {
     private static int setTransitionsID = 1;
     private AutomataTable resultingAutomata;
 
+    /**
+     * DFAMinimizer's constructor
+     * @param dfa DFA's table
+     */
     public DFAMinimizer(AutomataTable dfa) {
         resultingAutomata = minimize(dfa);
     }
 
+    /**
+     * Gets the DFA's table
+     * @return The DFA's table
+     */
     public AutomataTable getDFA() {
         return resultingAutomata;
     }
 
+    /**
+ 	 *
+     * Creates a set of transactions
+     *
+     */
     private class SetTransitations {
         private int id;
         private SetTransitations[] transitions;
         private Set<AutomataState> states;
 
+        /**
+         * SetTransaction's constructor
+         * @param id State's identifier
+         */
         private SetTransitations(int id) {
             this.id = id;
             states = new HashSet<>();

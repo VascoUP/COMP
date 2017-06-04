@@ -3,11 +3,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import automata.AutomataState;
 import automata.AutomataTable;
-import automata.PrintAutomata;
 
 public class JavaProgram implements ProgramMaker {
 	private static final URL fileURL = JavaProgram.class.getResource("assets/");
@@ -21,11 +22,7 @@ public class JavaProgram implements ProgramMaker {
 	@Override
 	public String code() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("public class RegIdent {\n");
-		builder.append("	public static void main(String[] args) {\n");
-		builder.append("		System.out.println(\"Hello World!\");\n");
-		builder.append("	}\n");
-		builder.append("}\n");
+		writeJavaFile(builder);
 		return new String(builder);
 	}
 
@@ -46,72 +43,87 @@ public class JavaProgram implements ProgramMaker {
 	}
 
 	private void writeJavaFile(StringBuilder text){
-		text.append("public class RegIdent {\n");
 		writeJavaImports(text);
-		writeJavaComments(text);
-		writeJavavalidator(text);
+		text.append("public class RegIdent {\n");
+		writeJavaValidator(text);
 		writeJavaMain(text);
 		text.append("}");
 	}
 
 	private void writeJavaMain(StringBuilder text){
 		text.append("\n\tpublic static void main(String[] args) {\n");
-		text.append("\n\t\tString string;\n");
-		text.append("\t\tScanner input = new Scanner(System.in);\n");
-		text.append("\n\t\twhile(true) {\n");
-		text.append("\t\t\ttry {\n");
-		text.append("\t\t\t\tstring = input.nextLine();\n");
-		text.append("\t\t\t} catch (NoSuchElementException e) {\n");
-		text.append("\t\t\t\tbreak;\n");
-		text.append("\t\t\t}\n");
-		text.append("\n\t\t\tif(validator(string))\n");
-		text.append("\t\t\t\tSystem.out.println(\"DFA matches!\");\n");
-		text.append("\t\t\telse\n");
-		text.append("\t\t\t\tSystem.out.println(\"DFA does not match!\");\n");
-		text.append("\t\t}\n");
-		text.append("\n\t\tinput.close();\n");
+		text.append("\n\t\tString string = args[0];\n");
+		
+		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
+
+		int hashSize = stateGrammar.size();
+		
+		text.append("\t\nArrayList<ArrayList<Integer>> edges= new ArrayList<ArrayList<Integer>>();\n");
+		text.append(hashSize);
+
+		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
+			AutomataState key = state.getKey();
+			HashMap<String, Set<AutomataState>> value = state.getValue();
+
+			text.append("\n\tArrayList<Integer> map = new ArrayList<Integer>();\n");
+			
+			if(value.get("anyInput") != null){
+				text.append("map.add(");
+				text.append(key.getID());
+				text.append(");\n");
+			}
+			else{
+				int j;
+				for( j = 0; j < 256 ; j++) {
+					Set<AutomataState> dst = value.get(String.valueOf((char)j));
+					if(dst == null || dst.size() != 1) {
+						text.append("map.add(");
+						text.append(-1);
+						text.append(");\n");
+					} else {
+						AutomataState st = dst.iterator().next();
+						text.append("map.add(");
+						text.append(st.getID());
+						text.append(");\n");
+					}
+				}
+			}
+
+			text.append("\n\tedges.add(map);\n");
+		}
+		
+		text.append("\n\t\tif(validator(string, edges))\n");
+		text.append("\t\t\tSystem.out.println(\"DFA matches!\");\n");
+		text.append("\t\telse\n");
+		text.append("\t\t\tSystem.out.println(\"DFA does not match!\");\n");
 		text.append("\t}\n");
 	}
 
-	private void writeJavaComments(StringBuilder text) {
-		text.append("\n\t/*\n\n");
-		text.append(toString());
-		text.append("\n\t*/\n");
-	}
-
+	
 	private void writeJavaImports(StringBuilder text) {
 		text.append("import java.util.HashMap;\n");
 		text.append("import java.util.HashSet;\n");
 		text.append("import java.util.Map;\n");
 		text.append("import java.util.NoSuchElementException;\n");
-		text.append("import java.util.Scanner;\n");
+		text.append("import java.util.ArrayList;\n");
 		text.append("import java.util.Set;\n");
 	}
 
-	public void writeJavavalidator(StringBuilder text){
-		AutomataState state = table.getStartState();
-		AutomataState[] acceptStates = table.getAcceptStates();
-		ArrayList<Integer> finalStatesID = new ArrayList<Integer>();
-		for(AutomataState a : acceptStates)
-			finalStatesID.add(a.getID());
-
-		text.append("public static boolean validator(String str) {\n");
-		text.append("\tint state =").append(table.getStartState().getID()).append(", nextState;\n");
-		text.append("\tboolean finalStatePresent = false;\n");
-		text.append("\tfor(Character c: str.toCharArray()) {\n");
-		//text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");
-		text.append("\t\tif(nextState == null || nextState == -1)\n");
+	public void writeJavaValidator(StringBuilder text){
+		text.append("public static boolean validator(String str, ArrayList<ArrayList<Integer>> edges) {\n");
+		text.append("\tint currentState =").append(table.getStartState().getID());
+		text.append("\tint character = (int)str.charAt(0);\n");
+		text.append("\tfor(int i = 0; i < str.length(); i++) {\n");
+		text.append("\t\tif(edges.get(currentState).get((int)str.charAt(i)) != -1){\n");
+		text.append("\t\t\tcurrentState = edges.get(currentState).get((int)str.charAt(i));\n");
+		text.append("\t\t}\n");
+		text.append("\t\telse\n");
 		text.append("\t\t\treturn false;\n");
-		text.append("\t}");
-		text.append("\tfor(int").append(finalStatesID).append(": fState){\n");
-		text.append("\t\tif(nextState == fState)\n");
-		text.append("\t\t\tfinalStatePresent = true;\n");
-		text.append("\t}");
-		text.append("\tif(finalStatePresent)\n");
-		text.append("\t\treturn true;\n");
-		text.append("\telse\n");
-		text.append("\t\treturn false;\n");
-		text.append("}\n");
+		text.append("\t}\n");
+		text.append("\treturn true;\n");
+		text.append("}");
 	}
+	
+	
 
 }
