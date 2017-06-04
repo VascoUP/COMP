@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f3f47ea-fe48-4889-a1ac-7d163b5c9197" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/automata/DFAMinimizer.java" afterPath="$PROJECT_DIR$/src/automata/DFAMinimizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regex2auto.jj" afterPath="$PROJECT_DIR$/src/regex2auto.jj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regex2auto.jjt" afterPath="$PROJECT_DIR$/src/regex2auto.jjt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/codemaking/CProgram.java" afterPath="$PROJECT_DIR$/src/codemaking/CProgram.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path=".idea/" />
@@ -23,7 +21,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="regex2auto.jjt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="regex2auto.jjt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -33,12 +31,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrintAutomata.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/automata/PrintAutomata.java">
+      <file leaf-file-name="CProgram.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="-882">
+              <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+              <folding>
+                <element signature="e#539#540#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1273#1274#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,11 +49,22 @@
       <file leaf-file-name="DFAMinimizer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#225#226#0" expanded="false" />
+                <element signature="e#274#275#0" expanded="false" />
+                <element signature="e#311#312#0" expanded="false" />
+                <element signature="e#351#352#0" expanded="false" />
                 <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="e#773#774#0" expanded="false" />
+                <element signature="e#814#815#0" expanded="false" />
+                <element signature="e#871#872#0" expanded="false" />
+                <element signature="e#915#916#0" expanded="false" />
+                <element signature="e#977#978#0" expanded="false" />
+                <element signature="e#1030#1031#0" expanded="false" />
                 <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -64,37 +78,6 @@
                 <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AutomataTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-147">
-              <caret line="22" column="15" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-              <folding>
-                <element signature="method#getStateByID#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getAcceptStates#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getStartState#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getStateInputTransitions#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getStateTransitions#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getEClosure#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#getEClosure#1;class#AutomataTable#0" expanded="false" />
-                <element signature="method#removeState#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#verifyAddTransition#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateAddTransition#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateCopyTransitions#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetTransition#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetEmptyTransition#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetArrTransition#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetAllTransitions#0;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateCopyTransitions#1;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetTransition#1;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetEmptyTransition#1;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetAllTransitions#1;class#AutomataTable#0" expanded="false" />
-                <element signature="method#stateSetArrTransition#1;class#AutomataTable#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,7 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/codemaking/CProgram.java" />
         <option value="$PROJECT_DIR$/src/SimpleNode.java" />
         <option value="$PROJECT_DIR$/src/automata/AutomataTableOperations.java" />
         <option value="$PROJECT_DIR$/src/automata/AutomataGrammar.java" />
@@ -137,6 +119,7 @@
         <option value="$PROJECT_DIR$/src/automata/DFAMin.java" />
         <option value="$PROJECT_DIR$/src/automata/DFAMinimizer.java" />
         <option value="$PROJECT_DIR$/src/regex2auto.jjt" />
+        <option value="$PROJECT_DIR$/src/codemaking/CProgram.java" />
       </list>
     </option>
   </component>
@@ -168,6 +151,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -208,14 +192,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="automata" />
+              <option name="myItemId" value="codemaking" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -687,46 +670,56 @@
       <workItem from="1496395752711" duration="2243000" />
       <workItem from="1496417958199" duration="43000" />
       <workItem from="1496494798298" duration="6259000" />
-      <workItem from="1496505797927" duration="15481000" />
+      <workItem from="1496505797927" duration="15527000" />
+      <workItem from="1496564525223" duration="1543000" />
     </task>
+    <task id="LOCAL-00001" summary="DFA simplification implemented">
+      <created>1496523804750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1496523804750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33625000" />
+    <option name="totallyTimeSpent" value="35214000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26906553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26530612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -734,6 +727,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="DFA simplification implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="DFA simplification implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -746,11 +743,90 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/PrintAutomata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
+            <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
+            <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+          <folding>
+            <element signature="method#getStateByID#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getAcceptStates#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getStartState#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getStateInputTransitions#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getStateTransitions#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getEClosure#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#getEClosure#1;class#AutomataTable#0" expanded="false" />
+            <element signature="method#removeState#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#verifyAddTransition#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateAddTransition#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateCopyTransitions#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetTransition#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetEmptyTransition#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetArrTransition#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetAllTransitions#0;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateCopyTransitions#1;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetTransition#1;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetEmptyTransition#1;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetAllTransitions#1;class#AutomataTable#0" expanded="false" />
+            <element signature="method#stateSetArrTransition#1;class#AutomataTable#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7056">
           <caret line="336" column="5" lean-forward="true" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,12 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding>
-            <marker date="1496522502952" expanded="false" signature="19932:19940" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="19959:19963" ph=" }" />
-            <marker date="1496522502952" expanded="false" signature="20843:20851" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="20872:20876" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,8 +857,19 @@
         <state relative-caret-position="1176">
           <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -811,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5229">
           <caret line="253" column="33" lean-forward="false" selection-start-line="253" selection-start-column="33" selection-end-line="257" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -820,8 +899,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -843,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -851,7 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5313">
           <caret line="253" column="33" lean-forward="true" selection-start-line="253" selection-start-column="33" selection-end-line="257" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,8 +948,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -883,7 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4767">
           <caret line="227" column="70" lean-forward="true" selection-start-line="227" selection-start-column="70" selection-end-line="227" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,8 +1004,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -930,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5712">
           <caret line="272" column="14" lean-forward="true" selection-start-line="272" selection-start-column="14" selection-end-line="281" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -946,8 +1053,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -1056,13 +1174,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/codemaking/JavaProgram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -1095,7 +1206,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="336" column="5" lean-forward="false" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,12 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="17" column="15" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding>
-            <marker date="1496522502952" expanded="false" signature="19932:19940" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="19959:19963" ph=" }" />
-            <marker date="1496522502952" expanded="false" signature="20843:20851" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="20872:20876" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1116,7 +1220,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,7 +1227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,14 +1234,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
           <caret line="84" column="28" lean-forward="false" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-147">
-          <caret line="22" column="15" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        <state relative-caret-position="231">
+          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
           <folding>
             <element signature="method#getStateByID#0;class#AutomataTable#0" expanded="false" />
             <element signature="method#getAcceptStates#0;class#AutomataTable#0" expanded="false" />
@@ -1167,11 +1268,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#274#275#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#915#916#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
@@ -1202,6 +1314,19 @@
         <state relative-caret-position="294">
           <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-882">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding>
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
