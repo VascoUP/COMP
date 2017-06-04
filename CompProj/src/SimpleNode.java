@@ -2,15 +2,15 @@
 /* JavaCCOptions:MULTI=false,NODE_USES_PARSER=false,VISITOR=false,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 public class SimpleNode implements Node {
 
-	protected Node parent;
-	protected Node[] children;
-	protected int id;
-	protected Object value;
+	private Node parent;
+	Node[] children;
+	private int id;
+	private Object value;
 	protected reg2auto parser;
 
-	protected String terminal;
+	private String terminal;
 
-	public SimpleNode(int i) {
+	SimpleNode(int i) {
 		id = i;
 	}
 
@@ -19,11 +19,11 @@ public class SimpleNode implements Node {
 		parser = p;
 	}
 
-	public void setTerminal(String str) {
+	void setTerminal(String str) {
 		terminal = str;
 	}
 
-	public String getTerminal() {
+	String getTerminal() {
 		return terminal;
 	}
 
@@ -60,7 +60,6 @@ public class SimpleNode implements Node {
 		return (children == null) ? 0 : children.length;
 	}
 
-	@Override
 	public int getId() {
 		return id;
 	}
@@ -85,7 +84,7 @@ public class SimpleNode implements Node {
 		return reg2autoTreeConstants.jjtNodeName[id];
 	}
 
-	public String toString(String prefix) {
+	private String toString(String prefix) {
 		return prefix + toString();
 	}
 
@@ -94,12 +93,12 @@ public class SimpleNode implements Node {
 	 * children.
 	 */
 
-	public void dump(String prefix) {
+	void dump(String prefix) {
 		System.out.print(toString(prefix));
 		if (children != null) {
 			System.out.print("\n");
-			for (int i = 0; i < children.length; ++i) {
-				SimpleNode n = (SimpleNode) children[i];
+			for (Node aChildren : children) {
+				SimpleNode n = (SimpleNode) aChildren;
 				if (n != null) {
 					n.dump(prefix + " ");
 				}
