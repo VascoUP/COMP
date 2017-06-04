@@ -6,17 +6,31 @@ import automata.AutomataTable;
 import automata.AutomataTableOperations;
 import automata.AutomataType;
 
+/**
+ * 
+ * This class generates the eNFA
+ *
+ */
 public class GenerateENFA {
 	private static final String TERMINAL_NAME = "Terminal";
 	private static final String QUALIFIER_NAME = "Qualifier";
 	private static final String EXPT_NAME = "ExpressionType";
 	private static final String PARENTHESIS_NAME = "ParenthesisExp";
 
-	
+	/**
+	 * Creates an automata table from the eNFA
+	 * @param root eNFA's root
+	 * @return The automata table created
+	 */
 	public static AutomataTable enfa(SimpleNode root) {
 		return start(root);
 	}
 
+	/**
+	 * Creates an automata table from the eNFA's root
+	 * @param root eNFA's root
+	 * @return The automata table created
+	 */
 	public static AutomataTable start(SimpleNode root) {
 		return expression((SimpleNode) root.children[0]);
 	}
@@ -27,6 +41,12 @@ public class GenerateENFA {
 	 * ======================
 	 * ===== EXPRESSION =====
 	 * ======================
+	 */
+	
+	/**
+	 * Creates an automata table using the node passed by the start() function
+	 * @param node Node to be added to the automata table
+	 * @return The automata table created
 	 */
 	public static AutomataTable expression(SimpleNode node) {
 		System.out.println("expression: Node " + node.toString());
@@ -50,6 +70,11 @@ public class GenerateENFA {
 	 * ======================
 	 * == EXPRESSIONS TYPE ==
 	 * ======================
+	 */
+	/**
+	 * Creates an automata table using the expressionType from the node selected
+	 * @param node Node to be added to the automata table
+	 * @return The automata table created
 	 */
 	public static AutomataTable expressionType(SimpleNode node) {
 		System.out.println("expressionType: Node " + node.toString());
@@ -76,6 +101,11 @@ public class GenerateENFA {
 		return exp == null ? fExp : exp;
 	}
 	
+	/**
+	 * Creates an automata table parsing the expressionType of the node selected
+	 * @param node The node to be analyzed
+	 * @return The automata table created
+	 */
 	public static AutomataTable parseExpressionType(SimpleNode node) {
 		System.out.println("parseExpressionType: Node " + node.toString());
 		AutomataTable table;
@@ -90,7 +120,11 @@ public class GenerateENFA {
 		return table;
 	}
 	
-	
+	/**
+	 * Creates an automata table for a range expression
+	 * @param node Node to be added
+	 * @return The automata table created
+	 */
 	public static AutomataTable rangeExpression(SimpleNode node) {
 		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
 		int fromID = table.addState(true, false);
@@ -100,6 +134,13 @@ public class GenerateENFA {
 		return table;
 	}
 	
+	/**
+	 * Analyzes the range of a expression
+	 * @param node Node to be analyzed
+	 * @param table AutomataTable where the node will be added
+	 * @param fromState Initial state
+	 * @param toState Next state
+	 */
 	public static void range(SimpleNode node, AutomataTable table, int fromState, int toState) {
 		SimpleNode firstInput = (SimpleNode) ((SimpleNode) node.children[0]).children[0];
 		if( node.children.length > 1 ) {
@@ -118,6 +159,12 @@ public class GenerateENFA {
 	 * ====== TERMINAL ======
 	 * ======================
 	 */
+	
+	/**
+	 * Creates a automata table for a terminal
+	 * @param node Node to be added
+	 * @return The automata created
+	 */
 	public static AutomataTable tableTerminal(SimpleNode node) {
 		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
 		terminal(	node, 
@@ -126,6 +173,12 @@ public class GenerateENFA {
 		return table;
 	}
 
+	/**
+	 * Analyzes a terminal expression
+	 * @param node Node that will be analyzed
+	 * @param table Automata table where the node will be added
+	 * @param connectID Connection's identifier
+	 */
 	public static void terminal(SimpleNode node, AutomataTable table, int connectID) {
 		System.out.println("terminal: Node " + node.toString());
 		if (node.children != null && node.children.length != 0) {
@@ -146,6 +199,12 @@ public class GenerateENFA {
 	 * ======================
 	 */
 
+	/**
+	 * Creates an automata table for a qualifier
+	 * @param node No to be added
+	 * @param table Automata table used to create the new table
+	 * @return The automata table created
+	 */
 	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
 		AutomataTable result;
 
@@ -165,6 +224,12 @@ public class GenerateENFA {
 		return result;
 	}
 
+	/**
+	 * Creates an automata table for a complex qualifier
+	 * @param node No to be added
+	 * @param table Automata table used to create the new table
+	 * @return The automata table created
+	 */
 	public static AutomataTable complexQualifierType(SimpleNode node, AutomataTable table) {
 		return table;
 	}

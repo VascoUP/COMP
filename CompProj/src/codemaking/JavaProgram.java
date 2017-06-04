@@ -48,7 +48,6 @@ public class JavaProgram implements ProgramMaker {
 	private void writeJavaFile(StringBuilder text){
 		text.append("public class RegIdent {\n");
 		writeJavaImports(text);
-		writeJavaComments(text);
 		writeJavavalidator(text);
 		writeJavaMain(text);
 		text.append("}");
@@ -56,29 +55,15 @@ public class JavaProgram implements ProgramMaker {
 
 	private void writeJavaMain(StringBuilder text){
 		text.append("\n\tpublic static void main(String[] args) {\n");
-		text.append("\n\t\tString string;\n");
-		text.append("\t\tScanner input = new Scanner(System.in);\n");
-		text.append("\n\t\twhile(true) {\n");
-		text.append("\t\t\ttry {\n");
-		text.append("\t\t\t\tstring = input.nextLine();\n");
-		text.append("\t\t\t} catch (NoSuchElementException e) {\n");
-		text.append("\t\t\t\tbreak;\n");
-		text.append("\t\t\t}\n");
-		text.append("\n\t\t\tif(validator(string))\n");
-		text.append("\t\t\t\tSystem.out.println(\"DFA matches!\");\n");
-		text.append("\t\t\telse\n");
-		text.append("\t\t\t\tSystem.out.println(\"DFA does not match!\");\n");
-		text.append("\t\t}\n");
-		text.append("\n\t\tinput.close();\n");
+		text.append("\n\t\tString string = args[1];\n");
+		text.append("\n\t\tif(validator(string))\n");
+		text.append("\t\t\tSystem.out.println(\"DFA matches!\");\n");
+		text.append("\t\telse\n");
+		text.append("\t\t\tSystem.out.println(\"DFA does not match!\");\n");
 		text.append("\t}\n");
 	}
 
-	private void writeJavaComments(StringBuilder text) {
-		text.append("\n\t/*\n\n");
-		text.append(toString());
-		text.append("\n\t*/\n");
-	}
-
+	
 	private void writeJavaImports(StringBuilder text) {
 		text.append("import java.util.HashMap;\n");
 		text.append("import java.util.HashSet;\n");
@@ -99,7 +84,7 @@ public class JavaProgram implements ProgramMaker {
 		text.append("\tint state =").append(table.getStartState().getID()).append(", nextState;\n");
 		text.append("\tboolean finalStatePresent = false;\n");
 		text.append("\tfor(Character c: str.toCharArray()) {\n");
-		text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");
+		text.append("\t\tnextState = ").append(table.getStateInputTransitions("a", state).next()).append(";\n");
 		text.append("\t\tif(nextState == null || nextState == -1)\n");
 		text.append("\t\t\treturn false;\n");
 		text.append("\t}");
@@ -113,5 +98,7 @@ public class JavaProgram implements ProgramMaker {
 		text.append("\t\treturn false;\n");
 		text.append("}\n");
 	}
+	
+	
 
 }

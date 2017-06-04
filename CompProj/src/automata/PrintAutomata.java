@@ -4,7 +4,17 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
+/**
+ * 
+ * This class prints the automata
+ *
+ */
 public class PrintAutomata {
+	/**
+	 * Gets the automata's table representative string
+	 * @param table Automata's table to be printed
+	 * @return The automata's table representative string
+	 */
 	public static String getString(AutomataTable table) {
 		StringBuilder builder = new StringBuilder();
 		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();

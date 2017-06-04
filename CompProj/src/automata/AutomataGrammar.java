@@ -1,5 +1,10 @@
 package automata;
 
+/**
+ * 
+ * This class creates a grammar to the automata
+ *
+ */
 public class AutomataGrammar {
 	public enum StringGroup {LOWERCASE, UPPERCASE, NUMBER, EPSILON, NONEXISTING};
 	
@@ -13,6 +18,11 @@ public class AutomataGrammar {
 	static final String emptyToken = "epsilon";
 	static final String anyInput = "anyInput";
 
+	/**
+	 * Gets the StringGroup of a string
+	 * @param entry String used to found the StringGroup
+	 * @return The StringGroup of the string
+	 */
 	private static StringGroup getGroup(String entry) {
 		if( entry.equals(emptyToken) )
 			return StringGroup.EPSILON;
@@ -30,6 +40,12 @@ public class AutomataGrammar {
 		return StringGroup.NONEXISTING;
 	}
 	
+	/**
+	 * Gets the input range from an initial string to an ending string
+	 * @param initRange Initial string
+	 * @param endRange Ending string
+	 * @return The input range from the initial string to the ending string
+	 */
 	public static String[] getRangeInput(String initRange, String endRange) {
 		int indexInit = (int) initRange.charAt(0);
 		int indexEnd = (int) endRange.charAt(0);
