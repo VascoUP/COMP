@@ -16,17 +16,17 @@ public class AutomataTableOperations {
 			first.stateSetEmptyTransition(state.getID(), secontStartID);
 		}
 
-		for (Entry<	AutomataState, 
-					HashMap<String, Set<AutomataState>>> entries : 
+		for (Entry<	AutomataState, HashMap<String, Set<AutomataState>>> entries :
 				second.getStateGrammar().entrySet()) {
-			
-			int sID;
 			if (secondStartState != entries.getKey()) {
 				entries.getKey().setStart(false);
-				sID = first.addState(entries.getKey());
-			} else
-				sID = secontStartID;
-			first.stateCopyTransitions(sID, entries.getValue());
+				first.addState(entries.getKey());
+			}
+		}
+
+		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> entries :
+				second.getStateGrammar().entrySet()) {
+			first.stateCopyTransitions(entries.getKey(), entries.getValue());
 		}
 
 		return first;

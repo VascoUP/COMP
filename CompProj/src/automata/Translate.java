@@ -1,12 +1,7 @@
 package automata;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 public class Translate {
 	public static AutomataTable getDFA(AutomataTable enfa) {
@@ -29,7 +24,6 @@ public class Translate {
 
 			addInputEClosure(table, enfa, newTableState, transitions, processStates);
 		}
-
 		return table;
 	}
 
@@ -61,7 +55,7 @@ public class Translate {
 		for (AutomataState state : setStates) {
 			HashMap<String, Set<AutomataState>> stateTransitions = enfa.getStateGrammar().get(state);
 			for (Entry<String, Set<AutomataState>> inputStateT : stateTransitions.entrySet()) {
-				if (inputStateT.getKey() == AutomataGrammar.emptyToken)
+				if (inputStateT.getKey().equals(AutomataGrammar.emptyToken))
 					continue;
 				Set<AutomataState> inputT = transitions.get(inputStateT.getKey());
 				

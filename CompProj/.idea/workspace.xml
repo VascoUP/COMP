@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f3f47ea-fe48-4889-a1ac-7d163b5c9197" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SimpleNode.java" afterPath="$PROJECT_DIR$/src/SimpleNode.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/automata/DFAMin.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GenerateENFA.java" afterPath="$PROJECT_DIR$/src/GenerateENFA.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/automata/AutomataTable.java" afterPath="$PROJECT_DIR$/src/automata/AutomataTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/automata/AutomataTableOperations.java" afterPath="$PROJECT_DIR$/src/automata/AutomataTableOperations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/automata/DFAMinimizer.java" afterPath="$PROJECT_DIR$/src/automata/DFAMinimizer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/automata/Translate.java" afterPath="$PROJECT_DIR$/src/automata/Translate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/codemaking/JavaProgram.java" afterPath="$PROJECT_DIR$/src/codemaking/JavaProgram.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regex2auto.jj" afterPath="$PROJECT_DIR$/src/regex2auto.jj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regex2auto.jjt" afterPath="$PROJECT_DIR$/src/regex2auto.jjt" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path=".idea/" />
@@ -16,54 +24,86 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CompProj$reg2auto.coverage" NAME="reg2auto Coverage Results" MODIFIED="1496512622662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CompProj$reg2auto.coverage" NAME="reg2auto Coverage Results" MODIFIED="1496609738811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="regex2auto.jjt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
+      <file leaf-file-name="Translate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/automata/Translate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state relative-caret-position="21">
+              <caret line="49" column="7" lean-forward="false" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CProgram.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
+      <file leaf-file-name="regex2auto.jjt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="121" column="29" lean-forward="false" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
-              <folding>
-                <element signature="e#539#540#0" expanded="true" />
-                <element signature="e#564#565#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="384">
+              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JavaProgram.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/codemaking/JavaProgram.java">
+      <file leaf-file-name="reg2auto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reg2auto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="106" column="53" lean-forward="true" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
+            <state relative-caret-position="294">
+              <caret line="16" column="61" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SimpleNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="e#1232#1233#0" expanded="true" />
-                <element signature="e#1248#1249#0" expanded="true" />
+                <marker date="1496610188905" expanded="true" signature="1004:1946" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="2010:3052" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="3120:5365" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="5433:6268" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="6330:7416" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="7475:8402" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="8465:10202" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="10272:11092" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="11175:12171" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="12229:12987" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="13045:13942" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="14000:14913" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="14971:15698" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="15760:16978" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="17034:18077" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="18137:18587" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="18647:19097" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="19155:19186" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="19283:19304" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="19336:19354" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="19535:19564" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="19604:19768" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="19772:19808" ph="/**...*/" />
+                <marker date="1496610188905" expanded="false" signature="19854:19862" ph=" { " />
+                <marker date="1496610188905" expanded="false" signature="19881:19885" ph=" }" />
+                <marker date="1496610188905" expanded="true" signature="19888:19945" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="20009:20685" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="20689:20709" ph="/**...*/" />
+                <marker date="1496610188905" expanded="false" signature="20765:20773" ph=" { " />
+                <marker date="1496610188905" expanded="true" signature="20801:20821" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="20895:21210" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="21214:21233" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="21275:21851" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="21855:21875" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="21927:22143" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="22147:22195" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="22239:22718" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="22722:22742" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="22789:22944" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="23018:23330" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="23333:23359" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="23403:23564" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="23566:23596" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="23645:23820" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="23854:24011" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="24176:24207" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="24264:25040" ph="{...}" />
+                <marker date="1496610188905" expanded="true" signature="25044:25066" ph="/**...*/" />
+                <marker date="1496610188905" expanded="true" signature="25120:25143" ph="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -72,35 +112,24 @@
       <file leaf-file-name="DFAMinimizer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="305">
+              <caret line="239" column="5" lean-forward="false" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#225#226#0" expanded="false" />
-                <element signature="e#274#275#0" expanded="false" />
-                <element signature="e#311#312#0" expanded="false" />
-                <element signature="e#351#352#0" expanded="false" />
                 <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="e#773#774#0" expanded="false" />
-                <element signature="e#814#815#0" expanded="false" />
-                <element signature="e#871#872#0" expanded="false" />
-                <element signature="e#915#916#0" expanded="false" />
-                <element signature="e#977#978#0" expanded="false" />
-                <element signature="e#1030#1031#0" expanded="false" />
                 <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+                <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
                 <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-                <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -118,6 +147,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>System.out.print</find>
+      <find>add se</find>
+      <find>println</find>
+      <find>Add</find>
+      <find>printl</find>
+      <find>p</find>
+      <find>print</find>
+      <find>prin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,19 +167,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/automata/AutomataTableOperations.java" />
         <option value="$PROJECT_DIR$/src/automata/AutomataGrammar.java" />
-        <option value="$PROJECT_DIR$/src/GenerateENFA.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/automata/HopcraftMinimizer.java" />
         <option value="$PROJECT_DIR$/src/automata/Hopcroft.java" />
-        <option value="$PROJECT_DIR$/src/automata/AutomataTable.java" />
         <option value="$PROJECT_DIR$/src/automata/DFAMin.java" />
-        <option value="$PROJECT_DIR$/src/automata/DFAMinimizer.java" />
-        <option value="$PROJECT_DIR$/src/regex2auto.jjt" />
         <option value="$PROJECT_DIR$/src/codemaking/CProgram.java" />
         <option value="$PROJECT_DIR$/src/SimpleNode.java" />
         <option value="$PROJECT_DIR$/src/codemaking/JavaProgram.java" />
+        <option value="$PROJECT_DIR$/src/automata/AutomataTableOperations.java" />
+        <option value="$PROJECT_DIR$/src/automata/Translate.java" />
+        <option value="$PROJECT_DIR$/src/regex2auto.jj" />
+        <option value="$PROJECT_DIR$/src/GenerateENFA.java" />
+        <option value="$PROJECT_DIR$/src/automata/AutomataTable.java" />
+        <option value="$PROJECT_DIR$/src/automata/DFAMinimizer.java" />
+        <option value="$PROJECT_DIR$/src/reg2auto.java" />
+        <option value="$PROJECT_DIR$/src/regex2auto.jjt" />
       </list>
     </option>
   </component>
@@ -175,6 +214,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -220,10 +261,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CompProj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CompProj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="automata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -234,7 +291,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/src/reg2auto.java" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/src/regex2auto.jj&#10;C:/Users/vasco/OneDrive/Documentos/GitHub/COMP/CompProj/src/reg2auto.java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -696,6 +753,8 @@
       <workItem from="1496494798298" duration="6259000" />
       <workItem from="1496505797927" duration="15527000" />
       <workItem from="1496564525223" duration="2850000" />
+      <workItem from="1496605136334" duration="4239000" />
+      <workItem from="1496609401341" duration="918000" />
     </task>
     <task id="LOCAL-00001" summary="DFA simplification implemented">
       <created>1496523804750</created>
@@ -708,41 +767,42 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36521000" />
+    <option name="totallyTimeSpent" value="41678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26906553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27658433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,6 +826,40 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/codemaking/JavaProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2226">
+          <caret line="106" column="53" lean-forward="true" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
+          <folding>
+            <element signature="e#2855#2864#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -787,32 +881,21 @@
         <state relative-caret-position="1218">
           <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -821,39 +904,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding>
-            <element signature="method#getStateByID#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getAcceptStates#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getStartState#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getStateInputTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getStateTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getEClosure#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getEClosure#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#removeState#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#verifyAddTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateAddTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateCopyTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetEmptyTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetArrTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetAllTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateCopyTransitions#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetTransition#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetEmptyTransition#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetAllTransitions#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetArrTransition#1;class#AutomataTable#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7056">
-          <caret line="336" column="5" lean-forward="true" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
     <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -867,10 +922,55 @@
         <state relative-caret-position="315">
           <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
           <folding>
-            <marker date="1496522502952" expanded="false" signature="19932:19940" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="19959:19963" ph=" }" />
-            <marker date="1496522502952" expanded="false" signature="20843:20851" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="20872:20876" ph=" }" />
+            <marker date="1496610188905" expanded="true" signature="1004:1946" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="2010:3052" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="3120:5365" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="5433:6268" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="6330:7416" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="7475:8402" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="8465:10202" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="10272:11092" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="11175:12171" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="12229:12987" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="13045:13942" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="14000:14913" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="14971:15698" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="15760:16978" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="17034:18077" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="18137:18587" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="18647:19097" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19155:19186" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19283:19304" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19336:19354" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19535:19564" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19604:19768" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19772:19808" ph="/**...*/" />
+            <marker date="1496610188905" expanded="false" signature="19854:19862" ph=" { " />
+            <marker date="1496610188905" expanded="false" signature="19881:19885" ph=" }" />
+            <marker date="1496610188905" expanded="true" signature="19888:19945" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="20009:20685" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="20689:20709" ph="/**...*/" />
+            <marker date="1496610188905" expanded="false" signature="20765:20773" ph=" { " />
+            <marker date="1496610188905" expanded="true" signature="20801:20821" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="20895:21210" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="21214:21233" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="21275:21851" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="21855:21875" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="21927:22143" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="22147:22195" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="22239:22718" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="22722:22742" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="22789:22944" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23018:23330" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23333:23359" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="23403:23564" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23566:23596" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="23645:23820" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23854:24011" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="24176:24207" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="24264:25040" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="25044:25066" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="25120:25143" ph="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -879,7 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,75 +987,46 @@
         <state relative-caret-position="1176">
           <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5229">
-          <caret line="253" column="33" lean-forward="false" selection-start-line="253" selection-start-column="33" selection-end-line="257" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
     <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -965,49 +1035,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5313">
-          <caret line="253" column="33" lean-forward="true" selection-start-line="253" selection-start-column="33" selection-end-line="257" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
     <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1016,18 +1067,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4767">
-          <caret line="227" column="70" lean-forward="true" selection-start-line="227" selection-start-column="70" selection-end-line="227" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
     <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2226">
@@ -1040,44 +1083,26 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5712">
-          <caret line="272" column="14" lean-forward="true" selection-start-line="272" selection-start-column="14" selection-end-line="281" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
     <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2226">
@@ -1090,32 +1115,21 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
             <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
             <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
             <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1190,24 +1204,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateENFA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="109" column="42" lean-forward="true" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/Translate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="36" column="16" lean-forward="false" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1225,82 +1225,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java">
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMin.java" />
+    <entry file="file://$PROJECT_DIR$/src/codemaking/JavaProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="336" column="5" lean-forward="false" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reg2auto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="15" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="1893">
+          <caret line="108" column="27" lean-forward="true" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
           <folding>
-            <marker date="1496522502952" expanded="false" signature="19932:19940" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="19959:19963" ph=" }" />
-            <marker date="1496522502952" expanded="false" signature="20843:20851" ph=" { " />
-            <marker date="1496522502952" expanded="false" signature="20872:20876" ph=" }" />
+            <element signature="e#2855#2864#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/AutomataState.java">
+    <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="121" column="29" lean-forward="false" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+          <folding>
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SimpleNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/AutomataGrammar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/AutomataTableOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="84" column="28" lean-forward="false" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-            <element signature="e#274#275#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
-            <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
-            <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#minimize#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#reorganizeSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#repositionState#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#isFinalSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
-            <element signature="method#equalSets#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="e#1232#1233#0" expanded="false" />
+            <element signature="e#1248#1249#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1313,71 +1266,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
+    <entry file="file://$PROJECT_DIR$/src/regex2auto.jj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+        <state relative-caret-position="336">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/codemaking/CProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="121" column="29" lean-forward="false" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
-          <folding>
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SimpleNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="e#1232#1233#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/automata/AutomataTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="60" column="30" lean-forward="false" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        <state relative-caret-position="207">
+          <caret line="146" column="36" lean-forward="true" selection-start-line="146" selection-start-column="36" selection-end-line="146" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/AutomataState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/AutomataGrammar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateENFA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
           <folding>
-            <element signature="method#getStateByID#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getAcceptStates#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getStartState#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getStateTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getEClosure#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#getEClosure#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#removeState#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#verifyAddTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateAddTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateCopyTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetEmptyTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetArrTransition#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetAllTransitions#0;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateCopyTransitions#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetTransition#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetEmptyTransition#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetAllTransitions#1;class#AutomataTable#0" expanded="false" />
-            <element signature="method#stateSetArrTransition#1;class#AutomataTable#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4502#4503#0" expanded="true" />
+            <element signature="e#4521#4522#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/codemaking/JavaProgram.java">
+    <entry file="file://$PROJECT_DIR$/src/automata/AutomataTableOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="106" column="53" lean-forward="true" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
+        <state relative-caret-position="489">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/Translate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="49" column="7" lean-forward="false" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/automata/DFAMinimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="239" column="5" lean-forward="false" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#SetTransitations#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#toString#0;class#SetTransitations#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#initialSets#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#calculateMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#buildMinimizedDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsIterate#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setsAddSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newDfa#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#newTransition#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#setToState#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#isInitialSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateTransitions#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getStateSet#0;class#DFAMinimizer#0" expanded="false" />
+            <element signature="method#getSetByID#0;class#DFAMinimizer#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reg2auto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="16" column="61" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+          <folding>
+            <marker date="1496610188905" expanded="true" signature="1004:1946" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="2010:3052" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="3120:5365" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="5433:6268" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="6330:7416" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="7475:8402" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="8465:10202" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="10272:11092" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="11175:12171" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="12229:12987" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="13045:13942" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="14000:14913" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="14971:15698" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="15760:16978" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="17034:18077" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="18137:18587" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="18647:19097" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19155:19186" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19283:19304" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19336:19354" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="19535:19564" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19604:19768" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="19772:19808" ph="/**...*/" />
+            <marker date="1496610188905" expanded="false" signature="19854:19862" ph=" { " />
+            <marker date="1496610188905" expanded="false" signature="19881:19885" ph=" }" />
+            <marker date="1496610188905" expanded="true" signature="19888:19945" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="20009:20685" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="20689:20709" ph="/**...*/" />
+            <marker date="1496610188905" expanded="false" signature="20765:20773" ph=" { " />
+            <marker date="1496610188905" expanded="true" signature="20801:20821" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="20895:21210" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="21214:21233" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="21275:21851" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="21855:21875" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="21927:22143" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="22147:22195" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="22239:22718" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="22722:22742" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="22789:22944" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23018:23330" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23333:23359" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="23403:23564" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23566:23596" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="23645:23820" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="23854:24011" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="24176:24207" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="24264:25040" ph="{...}" />
+            <marker date="1496610188905" expanded="true" signature="25044:25066" ph="/**...*/" />
+            <marker date="1496610188905" expanded="true" signature="25120:25143" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regex2auto.jjt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

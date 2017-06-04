@@ -16,20 +16,18 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
 	public static void main(String args []) {
     	reg2auto parser = new reg2auto(System.in);
     
-		try {
-		  SimpleNode n = parser.Start();
-		  n.dump("");
-		  AutomataTable table = GenerateENFA.enfa(n);
-		  AutomataTable dfatable = Translate.getDFA(table);
-		  DFAMinimizer min = new DFAMinimizer(dfatable);
-		  dfatable = min.getDFA();
-		  System.out.println(PrintAutomata.getString(dfatable));
-		  DisplayAutomata.display(dfatable);
-		  //n.dump("");
-		}
-		catch (Exception e) {
-		  System.out.println("The given regular expression is not valid\n" + e.getMessage());
-		}
+        try {
+            SimpleNode n = parser.Start();
+            n.dump("");
+            AutomataTable table = GenerateENFA.enfa(n);
+            AutomataTable dfa = Translate.getDFA(table);
+            DFAMinimizer min = new DFAMinimizer(dfa);
+            dfa = min.getDFA();
+            System.out.println(PrintAutomata.getString(dfa));
+            DisplayAutomata.display(dfa);
+        } catch (Exception e) {
+            System.out.println("The given regular expression is not valid\n" + e.getMessage());
+        }
 	}
 }
 

@@ -153,8 +153,9 @@ public class AutomataTable {
 				inputT = new HashSet<>();
 				inputT.addAll(entries.getValue());
 				currTransitions.put(entries.getKey(), inputT);
-			} else
+			} else {
 				inputT.addAll(entries.getValue());
+			}
 		}
 
 		stateGrammar.put(state, currTransitions);

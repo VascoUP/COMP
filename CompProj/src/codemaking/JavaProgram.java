@@ -99,7 +99,7 @@ public class JavaProgram implements ProgramMaker {
 		text.append("\tint state =").append(table.getStartState().getID()).append(", nextState;\n");
 		text.append("\tboolean finalStatePresent = false;\n");
 		text.append("\tfor(Character c: str.toCharArray()) {\n");
-		text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");
+		//text.append("\t\tnextState = ").append(table.getStateInputTransitions(c, state).next()).append(";\n");
 		text.append("\t\tif(nextState == null || nextState == -1)\n");
 		text.append("\t\t\treturn false;\n");
 		text.append("\t}");

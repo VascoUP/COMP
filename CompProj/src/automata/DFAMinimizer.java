@@ -54,7 +54,6 @@ public class DFAMinimizer {
         List<SetTransitations> sets = initialSets(dfa);
         calculateMinimizedDfa(dfa, sets);
         return buildMinimizedDfa(sets);
-        //return dfa;
     }
 
 
@@ -83,7 +82,6 @@ public class DFAMinimizer {
         for(SetTransitations set : sets) {
             if(isInitialSet(set)) {
                 AutomataState state = setToState(newDfa, set);
-                System.out.println("New first state " + state);
                 stateSet.put(state, set);
                 break;
             }
@@ -91,7 +89,6 @@ public class DFAMinimizer {
         for(SetTransitations set : sets) {
             if(!isInitialSet(set)) {
                 AutomataState state = setToState(newDfa, set);
-                System.out.println("New state " + state);
                 stateSet.put(state, set);
             }
         }
@@ -138,11 +135,11 @@ public class DFAMinimizer {
     }
 
     private void repositionState(List<SetTransitations> sets, AutomataState state, SetTransitations[] transitations) {
-        for(SetTransitations set : sets) {
-            if(equalSets(set.transitions, transitations)) {
-                set.addState(state);
-                return;
-            }
+        if(sets.size() < 1) return;
+        SetTransitations set = sets.get(0);
+        if(equalSets(set.transitions, transitations) && isFinalSet(set) == state.getAccept()) {
+            set.addState(state);
+            return;
         }
         setsAddSet(sets, state, transitations);
     }
@@ -173,10 +170,8 @@ public class DFAMinimizer {
                     break;
                 }
             }
-            if(dst == null) {
+            if(dst == null)
                 throw new Error("Unable to find state");
-            }
-            System.out.println("Add new path " + String.valueOf((char) i) + " src: " + state + " dst: " + dst);
             newDfa.stateSetTransition(state, String.valueOf((char) i), dst);
         }
     }
@@ -236,7 +231,8 @@ public class DFAMinimizer {
 
 
     private boolean equalSets(SetTransitations[] sets1, SetTransitations[] sets2) {
-        if(sets1.length != sets2.length) return false;
+        if(sets1.length != sets2.length)
+            return false;
         for(int i = 0; i < sets1.length; i++)
             if(sets1[i] != sets2[i])
                 return false;
