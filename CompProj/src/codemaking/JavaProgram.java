@@ -11,7 +11,7 @@ import automata.AutomataState;
 import automata.AutomataTable;
 
 public class JavaProgram implements ProgramMaker {
-	private static final URL fileURL = JavaProgram.class.getResource("assets/");
+	private static final URL fileURL = JavaProgram.class.getResource("../programs/");
 	private static final String fileName = "RegIdent.java";
 	private AutomataTable table;
 	
@@ -51,24 +51,28 @@ public class JavaProgram implements ProgramMaker {
 	}
 
 	private void writeJavaMain(StringBuilder text){
-		text.append("\n\tpublic static void main(String[] args) {\n");
-		text.append("\n\t\tString string = args[0];\n");
+		text.append("\n\n\tpublic static void main(String[] args) {\n");
+		text.append("\t\tString string = args[0];\n");
 		
 		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
 
 		int hashSize = stateGrammar.size();
 		
-		text.append("\t\nArrayList<ArrayList<Integer>> edges= new ArrayList<ArrayList<Integer>>();\n");
+		text.append("\t\tArrayList<ArrayList<Integer>> edges= new ArrayList<ArrayList<Integer>>();\n");
 		text.append(hashSize);
 
+		boolean mapCreated = false;
 		for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> state : stateGrammar.entrySet()) {
 			AutomataState key = state.getKey();
 			HashMap<String, Set<AutomataState>> value = state.getValue();
 
-			text.append("\n\tArrayList<Integer> map = new ArrayList<Integer>();\n");
+			if(!mapCreated)
+				text.append("\t\tArrayList<Integer> map = new ArrayList<Integer>();\n");
+			else
+				text.append("\t\tmap.clear();\n");
 			
 			if(value.get("anyInput") != null){
-				text.append("map.add(");
+				text.append("\t\tmap.add(");
 				text.append(key.getID());
 				text.append(");\n");
 			}
@@ -77,22 +81,22 @@ public class JavaProgram implements ProgramMaker {
 				for( j = 0; j < 256 ; j++) {
 					Set<AutomataState> dst = value.get(String.valueOf((char)j));
 					if(dst == null || dst.size() != 1) {
-						text.append("map.add(");
+						text.append("\t\tmap.add(");
 						text.append(-1);
 						text.append(");\n");
 					} else {
 						AutomataState st = dst.iterator().next();
-						text.append("map.add(");
+						text.append("\t\tmap.add(");
 						text.append(st.getID());
 						text.append(");\n");
 					}
 				}
 			}
 
-			text.append("\n\tedges.add(map);\n");
+			text.append("\t\tedges.add(map);\n");
 		}
 		
-		text.append("\n\t\tif(validator(string, edges))\n");
+		text.append("\t\tif(validator(string, edges))\n");
 		text.append("\t\t\tSystem.out.println(\"DFA matches!\");\n");
 		text.append("\t\telse\n");
 		text.append("\t\t\tSystem.out.println(\"DFA does not match!\");\n");
@@ -101,27 +105,21 @@ public class JavaProgram implements ProgramMaker {
 
 	
 	private void writeJavaImports(StringBuilder text) {
-		text.append("import java.util.HashMap;\n");
-		text.append("import java.util.HashSet;\n");
-		text.append("import java.util.Map;\n");
-		text.append("import java.util.NoSuchElementException;\n");
 		text.append("import java.util.ArrayList;\n");
-		text.append("import java.util.Set;\n");
 	}
 
 	public void writeJavaValidator(StringBuilder text){
-		text.append("public static boolean validator(String str, ArrayList<ArrayList<Integer>> edges) {\n");
-		text.append("\tint currentState =").append(table.getStartState().getID());
-		text.append("\tint character = (int)str.charAt(0);\n");
-		text.append("\tfor(int i = 0; i < str.length(); i++) {\n");
-		text.append("\t\tif(edges.get(currentState).get((int)str.charAt(i)) != -1){\n");
-		text.append("\t\t\tcurrentState = edges.get(currentState).get((int)str.charAt(i));\n");
+		text.append("\tpublic static boolean validator(String str, ArrayList<ArrayList<Integer>> edges) {\n");
+		text.append("\t\tint currentState = ").append(table.getStartState().getID()).append(";\n");
+		text.append("\t\tint character = (int)str.charAt(0);\n");
+		text.append("\t\tfor(int i = 0; i < str.length(); i++) {\n");
+		text.append("\t\t\tif(edges.get(currentState).get((int)str.charAt(i)) != -1)\n");
+		text.append("\t\t\t\tcurrentState = edges.get(currentState).get((int)str.charAt(i));\n");
+		text.append("\t\t\telse\n");
+		text.append("\t\t\t\treturn false;\n");
 		text.append("\t\t}\n");
-		text.append("\t\telse\n");
-		text.append("\t\t\treturn false;\n");
-		text.append("\t}\n");
-		text.append("\treturn true;\n");
-		text.append("}");
+		text.append("\t\treturn true;\n");
+		text.append("\t}");
 	}
 	
 	

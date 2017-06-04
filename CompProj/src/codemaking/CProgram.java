@@ -13,7 +13,7 @@ import automata.AutomataTable;
 import automata.PrintAutomata;
 
 public class CProgram implements ProgramMaker {
-	private static final URL fileURL = JavaProgram.class.getResource("assets/");
+	private static final URL fileURL = JavaProgram.class.getResource("../programs/");
 	private static final String fileName = "regIdent.c";
 	private AutomataTable table;
 	
@@ -31,9 +31,8 @@ public class CProgram implements ProgramMaker {
 	@Override
 	public void toFile() {
 		String code = code();
-		System.out.println(code);
-		System.out.println(PrintAutomata.getString(table));
-		
+
+		System.out.println(fileURL.getPath());
 		File fnew = new File(fileURL.getPath() + fileName);
 		FileWriter f2;
 
@@ -64,20 +63,19 @@ public class CProgram implements ProgramMaker {
 		text.append("\tint character = (int)exp[0];\n");
 		text.append("\tint size = sizeof(exp);\n");
 		text.append("\tfor(i = 0 ; i < size; i++){\n");
-		text.append("\t\tif(edges[currentState][(int)exp[i]] != -1){\n");
+		text.append("\t\tif(edges[currentState][(int)exp[i]] != -1)\n");
 		text.append("\t\t\tcurrentState = edges[currentState][(int)exp[i]];\n");
-		text.append("\t\t}\n");
 		text.append("\t\telse\n");
-		text.append("\t\t\treturn 0;\n");
+		text.append("\t\t\treturn -1;\n");
 		text.append("\t}\n");
-		text.append("\treturn 1;\n");
+		text.append("\treturn currentState;\n");
 		text.append("}");
 	}
 
 	private void writeCMain(StringBuilder text) {
 		text.append("\nint main(int argc, char* argv[]) {\n");
 		text.append("\t\tif(argc != 2){\n");
-		text.append("\t\t\tprintf(\"%s\", \"Wrong number of arguments\n\");\n");
+		text.append("\t\t\tprintf(\"Wrong number of arguments\\n\");\n");
 		text.append("\t\t\treturn -1;\n");
 		text.append("\t\t}\n");
 		
@@ -124,13 +122,13 @@ public class CProgram implements ProgramMaker {
 		}
 
 
-		text.append("\t\t};");
+		text.append("\n\t\t};\n");
 				
-		text.append("\n\tif(validate(argv[1], edges) == 1)");
-		text.append("\t\tprintf(\"%s\", \"DFA match\n\");\n");
-		text.append("\telse\n");
-		text.append("\t\t\tprintf(\"%s\", \"DFA doesn't match\n\");\n");
-		text.append("\n\treturn 0;\n");
+		text.append("\t\tif(validate(argv[1], edges) == 1)\n");
+		text.append("\t\t\tprintf(\"DFA match\\n\");\n");
+		text.append("\t\telse\n");
+		text.append("\t\t\tprintf(\"DFA doesn't match\\n\");\n");
+		text.append("\t\treturn 0;\n");
 		text.append("}\n");
 	}
 }
