@@ -54,6 +54,7 @@ public class CProgram implements ProgramMaker {
 
 	private void writeCIncludes(StringBuilder text) {
 		text.append("#include <stdio.h>\n");
+		text.append("#include <string.h>\n");
 	}
 
 	private void writeCValidate(StringBuilder text){
@@ -117,9 +118,8 @@ public class CProgram implements ProgramMaker {
 					}
 				}
 			}
-			
+
 			text.append("}");
-			
 			var++;
 		}
 

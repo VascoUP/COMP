@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import automata.AutomataState;
 import automata.AutomataTable;
@@ -90,7 +91,7 @@ public class JavaProgram implements ProgramMaker {
 	public void writeJavavalidator(StringBuilder text){
 		AutomataState state = table.getStartState();
 		AutomataState[] acceptStates = table.getAcceptStates();
-		int[] finalStatesID;
+		ArrayList<Integer> finalStatesID = new ArrayList<Integer>();
 		for(AutomataState a : acceptStates)
 			finalStatesID.add(a.getID());
 
