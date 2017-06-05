@@ -122,11 +122,23 @@ public class JavaProgram implements ProgramMaker {
 			var++;
 		}
 		
-		text.append("\t\tif(validator(string, edges))\n");
-		text.append("\t\t\tSystem.out.println(\"DFA matches!\");\n");
-		text.append("\t\telse\n");
-		text.append("\t\t\tSystem.out.println(\"DFA does not match!\");\n");
-		text.append("\t}\n");
+		text.append("\n\t\tAutomataState acceptStates[] = table.getAcceptStates();\n");
+		text.append("\n\t\tint final[acceptStates.length];\n");
+		
+		text.append("\n\t\tint i;\n");
+		text.append("\n\t\tfor(i = 0 ; i < acceptStates.length ; i++)");
+		text.append("\n\t\t\tfinal[i] = acceptStates[i].getID();\n");
+		
+		text.append("\n\t\tint i;\n");
+		text.append("\n\t\tint result = validator(string, edges);\n");
+		text.append("\n\t\tfor(i = 0; i < final.length; i++) {\n");
+		text.append("\n\t\t\tif(result == final[i]) {\n");
+		text.append("\n\t\t\t\tprintf(\"DFA matches\n\");\n");
+		text.append("\n\t\t\t\treturn 0;\n");
+		text.append("\n\t\t\t}\n");    
+		text.append("\n\t\t}\n");
+		text.append("\n\t\tprintf(\"DFA doesn't match\n\");\n");
+		text.append("\n\t\treturn 0;\n");
 	}
 
 	/**
