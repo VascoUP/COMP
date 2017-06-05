@@ -8,4 +8,4 @@ cd bin
 call mkdir programs
 cd ..
 call javac -d ./bin/ -classpath ".;./lib/*" @sources.txt
-call rm sources.txt
+call del sources.txt
