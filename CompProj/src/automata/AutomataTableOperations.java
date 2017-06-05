@@ -54,30 +54,6 @@ public class AutomataTableOperations {
 		AutomataState[] firstAcceptStates = first.getAcceptStates();
 		return joinTables(first, second, firstAcceptStates);
 	}
-
-	/**
-	 * OR operation between tables
-	 * @param first First automata's table
-	 * @param second Second's automata's table
-	 * @return The new automata's table
-	 */
-	public static AutomataTable or(AutomataTable first, AutomataTable second) {
-		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
-
-		AutomataState firstState = new AutomataState(1, true, false);
-		nTable.addState(firstState);
-		AutomataState[] joinStates = new AutomataState[1];
-		joinStates[0] = firstState;
-
-		nTable = joinTables(nTable, first, joinStates);
-		nTable = joinTables(nTable, second, joinStates);
-
-		AutomataTable endTable = new AutomataTable(AutomataType.E_NFA);
-		endTable.addState(true, true);
-		nTable = join(nTable, endTable);
-
-		return nTable;
-	}
 	
 	/**
 	 * OR operation
