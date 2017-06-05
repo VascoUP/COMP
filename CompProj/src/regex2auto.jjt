@@ -63,6 +63,7 @@ TOKEN : {
 | 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
+| 	< POSITIVE_NUMBER: (["0" - "9"])+ >
 |  	< TERMINATE: "\n" >
 }
 
@@ -128,12 +129,12 @@ void CQT() : {}
 
 void CQT2() : { }
 {
-	< COMMA > Number()
+	< COMMA > PositiveNumber()
 }
 
 void CQT3() : {}
 {
-	Number() (CQT4())?
+	PositiveNumber() (CQT4())?
 }
 
 void CQT4() : {} 
@@ -143,7 +144,7 @@ void CQT4() : {}
 
 void CQT5() : {}
 {
-	Number()
+	PositiveNumber()
 }
 
 
@@ -171,6 +172,13 @@ void Letter() : { Token t; }
 void Number() : { Token t; }
 {
 	t = < NUMBER > {
+		jjtThis.setTerminal(t.image);
+	}
+}
+
+void PositiveNumber() : { Token t; }
+{
+	t = < POSITIVE_NUMBER > {
 		jjtThis.setTerminal(t.image);
 	}
 }

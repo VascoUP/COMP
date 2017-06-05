@@ -67,6 +67,7 @@ TOKEN : {
 | 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
+| 	< POSITIVE_NUMBER: (["0" - "9"])+ >
 |  	< TERMINATE: "\n" >
 }
 
@@ -382,7 +383,7 @@ void CQT2() : {/*@bgen(jjtree) CQT2 */
 {/*@bgen(jjtree) CQT2 */
         try {
 /*@egen*/
-	< COMMA > Number()/*@bgen(jjtree)*/
+	< COMMA > PositiveNumber()/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -413,7 +414,7 @@ void CQT3() : {/*@bgen(jjtree) CQT3 */
 {/*@bgen(jjtree) CQT3 */
         try {
 /*@egen*/
-	Number() (CQT4())?/*@bgen(jjtree)*/
+	PositiveNumber() (CQT4())?/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -475,7 +476,7 @@ void CQT5() : {/*@bgen(jjtree) CQT5 */
 {/*@bgen(jjtree) CQT5 */
         try {
 /*@egen*/
-	Number()/*@bgen(jjtree)*/
+	PositiveNumber()/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -607,6 +608,30 @@ void Number() : {/*@bgen(jjtree) Number */
                          jjtree.closeNodeScope(jjtn000, true);
                          jjtc000 = false;
                        }
+/*@egen*/ {
+		jjtn000.setTerminal(t.image);
+	}/*@bgen(jjtree)*/
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
+/*@egen*/
+}
+
+void PositiveNumber() : {/*@bgen(jjtree) PositiveNumber */
+                          SimpleNode jjtn000 = new SimpleNode(JJTPOSITIVENUMBER);
+                          boolean jjtc000 = true;
+                          jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
+{/*@bgen(jjtree) PositiveNumber */
+        try {
+/*@egen*/
+	t = < POSITIVE_NUMBER >/*@bgen(jjtree)*/
+                                {
+                                  jjtree.closeNodeScope(jjtn000, true);
+                                  jjtc000 = false;
+                                }
 /*@egen*/ {
 		jjtn000.setTerminal(t.image);
 	}/*@bgen(jjtree)*/
