@@ -20,7 +20,9 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
             SimpleNode n = parser.Start();
             n.dump("");
             AutomataTable table = GenerateENFA.enfa(n);
+            System.out.println(PrintAutomata.getString(table));
             AutomataTable dfa = Translate.getDFA(table);
+            System.out.println(PrintAutomata.getString(dfa));
             DFAMinimizer min = new DFAMinimizer(dfa);
             dfa = min.getDFA();
             System.out.println(PrintAutomata.getString(dfa));

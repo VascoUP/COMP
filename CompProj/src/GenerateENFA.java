@@ -19,7 +19,7 @@ public class GenerateENFA {
 	 * @param root eNFA's root
 	 * @return The automata table created
 	 */
-	public static AutomataTable enfa(SimpleNode root) {
+	static AutomataTable enfa(SimpleNode root) {
 		return start(root);
 	}
 
@@ -45,9 +45,7 @@ public class GenerateENFA {
 	 * @param node Node to be added to the automata table
 	 * @return The automata table created
 	 */
-	public static AutomataTable expression(SimpleNode node) {
-		System.out.println("expression: Node " + node.toString());
-
+    private static AutomataTable expression(SimpleNode node) {
 		if( node.children.length < 1 )
 			return null;
 		
@@ -73,7 +71,7 @@ public class GenerateENFA {
 	 * @param node Node to be added to the automata table
 	 * @return The automata table created
 	 */
-	public static AutomataTable expressionType(SimpleNode node) {
+    private static AutomataTable expressionType(SimpleNode node) {
 		AutomataTable fExp = parseExpressionType((SimpleNode) node.children[0]);
 		AutomataTable exp = null;
 		
@@ -100,7 +98,7 @@ public class GenerateENFA {
 	 * @param node The node to be analyzed
 	 * @return The automata table created
 	 */
-	public static AutomataTable parseExpressionType(SimpleNode node) {
+    private static AutomataTable parseExpressionType(SimpleNode node) {
 		AutomataTable table;
 		
 		if( node.toString().equals(TERMINAL_NAME) )
@@ -119,7 +117,7 @@ public class GenerateENFA {
 	 * @param node Node to be added
 	 * @return The automata table created
 	 */
-	public static AutomataTable rangeExpression(SimpleNode node) {
+    private static AutomataTable rangeExpression(SimpleNode node) {
 		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
 		int fromID = table.addState(true, false);
 		int toID = table.addState(false, true);
@@ -135,7 +133,7 @@ public class GenerateENFA {
 	 * @param fromState Initial state
 	 * @param toState Next state
 	 */
-	public static void range(SimpleNode node, AutomataTable table, int fromState, int toState) {
+    private static void range(SimpleNode node, AutomataTable table, int fromState, int toState) {
 		SimpleNode firstInput = (SimpleNode) ((SimpleNode) node.children[0]).children[0];
 		if( node.children.length > 1 ) {
 			SimpleNode secondInput= (SimpleNode) ((SimpleNode) node.children[1]).children[0];
@@ -157,7 +155,7 @@ public class GenerateENFA {
 	 * @param node Node to be added
 	 * @return The automata created
 	 */
-	public static AutomataTable tableTerminal(SimpleNode node) {
+    private static AutomataTable tableTerminal(SimpleNode node) {
 		AutomataTable table = new AutomataTable(AutomataType.E_NFA);
 		terminal(	node, 
 					table, 
@@ -171,8 +169,7 @@ public class GenerateENFA {
 	 * @param table Automata table where the node will be added
 	 * @param connectID Connection's identifier
 	 */
-	public static void terminal(SimpleNode node, AutomataTable table, int connectID) {
-		System.out.println("terminal: Node " + node.toString());
+    private static void terminal(SimpleNode node, AutomataTable table, int connectID) {
 		if (node.children != null && node.children.length != 0) {
 			node = (SimpleNode) node.children[0]; // T1
 			node = (SimpleNode) node.children[0]; // Letter or Number
@@ -195,7 +192,7 @@ public class GenerateENFA {
 	 * @param table Automata table used to create the new table
 	 * @return The automata table created
 	 */
-	public static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
+    private static AutomataTable qualifierType(SimpleNode node, AutomataTable table) {
 		AutomataTable result;
 
 		if (node.children != null && node.children.length != 0) {
@@ -225,7 +222,30 @@ public class GenerateENFA {
 	 * @param table Automata table used to create the new table
 	 * @return The automata table created
 	 */
-	public static AutomataTable complexQualifierType(SimpleNode node, AutomataTable table) {
+	private static AutomataTable complexQualifierType(SimpleNode node, AutomataTable table) {
+		node = (SimpleNode) node.children[0];
+
+        if(node.toString().equals("CQT2")) {
+            SimpleNode numberNode = (SimpleNode) node.children[0];
+            int m = Integer.parseInt(numberNode.getTerminal());
+            table = AutomataTableOperations.toM(table, m);
+        } else {
+            SimpleNode numberNode = (SimpleNode) node.children[0];
+            int n = Integer.parseInt(numberNode.getTerminal());
+            if(node.children.length == 2) {
+                node = (SimpleNode) node.children[1];
+                if(node.children != null && node.children.length == 1) {
+                    node = (SimpleNode) node.children[0];
+                    numberNode = (SimpleNode) node.children[0];
+                    int m = Integer.parseInt(numberNode.getTerminal());
+                    table = AutomataTableOperations.nToM(table, n, m);
+                } else {
+                    table = AutomataTableOperations.nToMax(table, n);
+                }
+            } else {
+                table = AutomataTableOperations.nToM(table, n, n);
+            }
+        }
 		return table;
 	}
 

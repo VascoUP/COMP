@@ -54,7 +54,7 @@ public class DisplayAutomata {
 	 * @return The automata's state converted to a string
 	 */
 	private static String stateToString(AutomataState state) {
-		return "q" + state.getID();
+		return (state.getStart() ? "->" : "") + (state.getAccept() ? "*" : "") + "q" + state.getID();
 	}
 	
 	/**

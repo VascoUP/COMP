@@ -109,12 +109,13 @@ public class DFAMinimizer {
         List<SetTransitations> sets = new ArrayList<>();
         SetTransitations acceptStates = new SetTransitations(setTransitionsID++);
         SetTransitations otherStates = new SetTransitations(setTransitionsID++);
-        sets.add(acceptStates);
-        sets.add(otherStates);
         for(AutomataState state : dfa.getStateGrammar().keySet()) {
             if(state.getAccept()) acceptStates.addState(state);
             else otherStates.addState(state);
         }
+        sets.add(acceptStates);
+        if(otherStates.states.size() > 0)
+            sets.add(otherStates);
         return sets;
     }
 

@@ -33,6 +33,25 @@ public class AutomataTable {
 		stateGrammar = new HashMap<>();
 	}
 
+	public AutomataTable(AutomataTable another) {
+		this.type = another.type;
+        this.stateGrammar = new HashMap<>();
+        for(Entry<AutomataState, HashMap<String, Set<AutomataState>>> entry : another.stateGrammar.entrySet())
+            addState(new AutomataState(entry.getKey()));
+
+        for(Entry<AutomataState, HashMap<String, Set<AutomataState>>> entry : another.stateGrammar.entrySet()) {
+            AutomataState state = getStateByID(entry.getKey().getID());
+            for(Entry<String, Set<AutomataState>> secondEntry : entry.getValue().entrySet()) {
+                String input = secondEntry.getKey();
+                for(AutomataState dst : secondEntry.getValue()) {
+                    AutomataState dstCopy = this.getStateByID(dst.getID());
+                    stateSetTransition(state, input, dstCopy);
+                }
+            }
+        }
+    }
+
+
 	/**
 	 * Gets the state's grammar
 	 * @return The state's grammar
@@ -72,6 +91,18 @@ public class AutomataTable {
 				acceptStates.add(entries.getKey());
 		return acceptStates.toArray(new AutomataState[acceptStates.size()]);
 	}
+
+    /**
+     * Gets the accepted states ids
+     * @return The accepted states
+     */
+    public ArrayList<Integer> getAcceptStatesID() {
+        ArrayList<Integer> acceptStates = new ArrayList<>();
+        for (Entry<AutomataState, HashMap<String, Set<AutomataState>>> entries : stateGrammar.entrySet())
+            if (entries.getKey().getAccept())
+                acceptStates.add(entries.getKey().getID());
+        return acceptStates;
+    }
 
 	/**
 	 * Gets the start state from the automata's table

@@ -5,7 +5,7 @@ package automata;
  * This class creates the different automata's states
  *
  */
-public class AutomataState implements Comparable<AutomataState> {
+public class AutomataState implements Comparable<AutomataState>, Cloneable {
 	private int id;
 	private boolean start;
 	private boolean accept;
@@ -20,6 +20,12 @@ public class AutomataState implements Comparable<AutomataState> {
 		this.id = id;
 		this.start = start;
 		this.accept = accept;
+	}
+
+	public AutomataState(AutomataState another) {
+		this.id = another.id;
+		this.start = another.start;
+		this.accept = another.accept;
 	}
 
 	/*
@@ -69,7 +75,7 @@ public class AutomataState implements Comparable<AutomataState> {
 
 	/**
 	 * Sets the accept variable's value
-	 * @param start The new value of the accept's variable
+	 * @param accept The new value of the accept's variable
 	 */
 	public void setAccept(boolean accept) {
 		this.accept = accept;
@@ -82,7 +88,7 @@ public class AutomataState implements Comparable<AutomataState> {
 	 */
 	@Override
 	public int compareTo(AutomataState other) {
-		return Integer.valueOf(id).compareTo(Integer.valueOf(other.getID()));
+		return Integer.valueOf(id).compareTo(other.getID());
 	}
 
 	/**
@@ -103,4 +109,10 @@ public class AutomataState implements Comparable<AutomataState> {
 	public boolean equals(Object other) {
 		return other.getClass() == this.getClass() && ((AutomataState) other).getID() == id;
 	}
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        super.clone();
+        return new AutomataState(this);
+    }
 }

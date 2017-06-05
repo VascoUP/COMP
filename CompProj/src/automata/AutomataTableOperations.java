@@ -1,9 +1,7 @@
 package automata;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * 
@@ -132,7 +130,6 @@ public class AutomataTableOperations {
 	public static AutomataTable zeroOrOne(AutomataTable table) {
 		AutomataTable nTable = new AutomataTable(AutomataType.E_NFA);
 		AutomataState acceptState = table.getAcceptStates()[0];
-		//AutomataState startState = table.getStartState();
 
 		AutomataState firstState = new AutomataState(1, true, false);
 		nTable.addState(firstState);
@@ -150,36 +147,62 @@ public class AutomataTableOperations {
 
 	/**
 	 * Range operation
-	 * @param first First automata's table
+	 * @param table First automata's table
 	 * @param n First value
 	 * @param m Second value
 	 * @return The new automata's table
 	 */
-	public static AutomataTable nToM(AutomataTable first, int n, int m) {
-		return first;
+	public static AutomataTable nToM(AutomataTable table, int n, int m) {
+		if(n > m)
+			return null;
+        AutomataTable result;
+        Set<Integer> finalStates = new HashSet<>();
+        int index;
+
+		if(n > 0) {
+            result = new AutomataTable(table);
+            for (int i = 1; i < n; i++) {
+                result = join(result, new AutomataTable(table));
+            }
+            index = n;
+        } else {
+            result = new AutomataTable(table);
+            finalStates.add(result.getStartState().getID());
+            index = 1;
+        }
+
+        for (; index < m; index++) {
+            finalStates.addAll(result.getAcceptStatesID());
+            result = join(result, new AutomataTable(table));
+        }
+        for (int finalStateID : finalStates)
+            result.getStateByID(finalStateID).setAccept(true);
+        return result;
 	}
 
 
 	/**
 	 * Range operation
-	 * @param first First automata's table
+	 * @param table First automata's table
 	 * @param n First value
 	 * @return The new automata's table
 	 */
-	public static AutomataTable nToMax(AutomataTable first, int n) {
-		return first;
+	public static AutomataTable nToMax(AutomataTable table, int n) {
+        AutomataTable result = nToM(table, n, n);
+        if(result == null) return null;
+        table = zeroOrMore(table);
+		return join(result, table);
 	}
 
 
 	/**
 	 * Range operation
-	 * @param first First automata's table
-	 * @param max Max value
-	 * @param m Second value
+	 * @param table First automata's table
+	 * @param m Max value
 	 * @return The new automata's table
 	 */
-	public static AutomataTable maxToM(AutomataTable first, int m) {
-		return first;
+	public static AutomataTable toM(AutomataTable table, int m) {
+	    return nToM(table, 0, m);
 	}
 
 	/**
