@@ -10,17 +10,29 @@ import java.util.Map.Entry;
 
 import automata.AutomataState;
 import automata.AutomataTable;
-import automata.PrintAutomata;
 
+/**
+ * 
+ * Creates the C program
+ *
+ */
 public class CProgram implements ProgramMaker {
 	private static final URL fileURL = JavaProgram.class.getResource("../programs/");
 	private static final String fileName = "regIdent.c";
 	private AutomataTable table;
 	
+	/**
+	 * CProgram's constructor
+	 * @param table Automata's table
+	 */
 	public CProgram(AutomataTable table) {
 		this.table = table;
 	}
 
+	/**
+	 * Creates the program's code
+	 * @return The program's code
+	 */
 	@Override
 	public String code() {
 		StringBuilder builder = new StringBuilder();
@@ -28,6 +40,9 @@ public class CProgram implements ProgramMaker {
 		return new String(builder);
 	}
 
+	/**
+	 * Writes the program's code into the respective file
+	 */
 	@Override
 	public void toFile() {
 		String code = code();
@@ -45,17 +60,29 @@ public class CProgram implements ProgramMaker {
 		}  
 	}
 
+	/**
+	 * Writes the program's code
+	 * @param text StringBuilder where the code will be placed
+	 */
 	private void writeCFile(StringBuilder text) {
 		writeCIncludes(text);
 		writeCValidate(text);
 		writeCMain(text);
 	}
-
+	
+	/**
+	 * Writes the program's includes
+	 * @param text StringBuilder where the code will be placed
+	 */
 	private void writeCIncludes(StringBuilder text) {
 		text.append("#include <stdio.h>\n");
 		text.append("#include <string.h>\n");
 	}
 
+	/**
+	 * Writes the validation function
+	 * @param text StringBuilder where the code will be placed
+	 */
 	private void writeCValidate(StringBuilder text){
 		text.append("\nint validate(char *exp, int edges[][], int edgesSize){\n");
 		text.append("\tint currentState = 0;\n");
@@ -72,6 +99,10 @@ public class CProgram implements ProgramMaker {
 		text.append("}");
 	}
 
+	/**
+	 * Write the program's main function
+	 * @param text StringBuilder where the code will be placed
+	 */
 	private void writeCMain(StringBuilder text) {
 		text.append("\nint main(int argc, char* argv[]) {\n");
 		text.append("\t\tif(argc != 2){\n");
@@ -123,7 +154,7 @@ public class CProgram implements ProgramMaker {
 
 
 		text.append("\n\t\t};\n");
-				
+		
 		text.append("\t\tif(validate(argv[1], edges) == 1)\n");
 		text.append("\t\t\tprintf(\"DFA match\\n\");\n");
 		text.append("\t\telse\n");
