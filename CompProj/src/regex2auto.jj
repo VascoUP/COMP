@@ -24,10 +24,10 @@ public class reg2auto/*@bgen(jjtree)*/implements reg2autoTreeConstants/*@egen*/ 
             DFAMinimizer min = new DFAMinimizer(dfa);
             dfa = min.getDFA();
             System.out.println(PrintAutomata.getString(dfa));
-            /*ProgramMaker cProg = new CProgram(dfa);
+            ProgramMaker cProg = new CProgram(dfa);
             cProg.toFile();
             ProgramMaker javaProg = new JavaProgram(dfa);
-            javaProg.toFile();*/
+            javaProg.toFile();
             DisplayAutomata.display(dfa);
         } catch (Exception e) {
             System.out.println("The given regular expression is not valid\n" + e.getMessage());

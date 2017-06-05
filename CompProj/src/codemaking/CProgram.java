@@ -84,11 +84,10 @@ public class CProgram implements ProgramMaker {
 	 * @param text StringBuilder where the code will be placed
 	 */
 	private void writeCValidate(StringBuilder text){
-		text.append("\nint validate(char *exp, int edges[][], int edgesSize){\n");
+		text.append("\nint validate(char *exp, int edges[][256]){\n");
 		text.append("\tint currentState = 0;\n");
+		text.append("\tint size = strlen(exp);\n");
 		text.append("\tint i;\n");
-		text.append("\tint character = (int)exp[0];\n");
-		text.append("\tint size = sizeof(exp);\n");
 		text.append("\tfor(i = 0 ; i < size; i++){\n");
 		text.append("\t\tif(edges[currentState][(int)exp[i]] != -1)\n");
 		text.append("\t\t\tcurrentState = edges[currentState][(int)exp[i]];\n");
@@ -105,16 +104,16 @@ public class CProgram implements ProgramMaker {
 	 */
 	private void writeCMain(StringBuilder text) {
 		text.append("\nint main(int argc, char* argv[]) {\n");
-		text.append("\t\tif(argc != 2){\n");
-		text.append("\t\t\tprintf(\"Wrong number of arguments\\n\");\n");
-		text.append("\t\t\treturn -1;\n");
-		text.append("\t\t}\n");
+		text.append("\tif(argc != 2){\n");
+		text.append("\t\tprintf(\"Wrong number of arguments\\n\");\n");
+		text.append("\t\treturn -1;\n");
+		text.append("\t}\n");
 		
 		HashMap<AutomataState, HashMap<String, Set<AutomataState>>> stateGrammar = table.getStateGrammar();
 
 		int hashSize = stateGrammar.size();
 		
-		text.append("\t\tint edges[");
+		text.append("\n\tint edges[");
 		text.append(hashSize);
 		text.append("][256] = {");
 
@@ -124,13 +123,16 @@ public class CProgram implements ProgramMaker {
 			HashMap<String, Set<AutomataState>> value = state.getValue();
 
 			if(var != 0)
-				text.append(",\n\t\t\t{");
+				text.append(",\n\t\t{");
 			else
-				text.append("\n\t\t\t{");
+				text.append("\n\t\t{");
 			
 			if(value.get("anyInput") != null) {
-				text.append(key.getID());
-				text.append(", ");
+				for( int j = 0; j < 256 ; j++) {
+					text.append(key.getID()-1);
+					if(j + 1 != 256)
+						text.append(", ");
+				}
 			}
 			else{
 				int j;
@@ -140,7 +142,7 @@ public class CProgram implements ProgramMaker {
 						text.append("-1");
 					} else {
 						AutomataState st = dst.iterator().next();
-						text.append(st.getID());
+						text.append(st.getID()-1);
 					}
 					if(j + 1 != 256) {
 						text.append(", ");
@@ -153,25 +155,30 @@ public class CProgram implements ProgramMaker {
 		}
 
 
-		text.append("\n\t\t};\n");
-		
-		text.append("\n\t\tAutomataState acceptStates[] = table.getAcceptStates();\n");
-		text.append("\n\t\tint final[acceptStates.length];\n");
-		
-		text.append("\n\t\tint i;\n");
-		text.append("\n\t\tfor(i = 0 ; i < acceptStates.length ; i++)");
-		text.append("\n\t\t\tfinal[i] = acceptStates[i].getID();\n");
-		
-		text.append("\n\t\tint i;\n");
-		text.append("\n\t\tint result = validate(argv[1], edges);\n");
-		text.append("\n\t\tfor(i = 0; i < final.length; i++) {\n");
-		text.append("\n\t\t\tif(result == final[i]) {\n");
-		text.append("\n\t\t\t\tprintf(\"DFA matches\n\");\n");
-		text.append("\n\t\t\t\treturn 0;\n");
-		text.append("\n\t\t\t}\n");    
-		text.append("\n\t\t}\n");
-		text.append("\n\t\tprintf(\"DFA doesn't match\n\");\n");
-		text.append("\n\t\treturn 0;\n");
+		text.append("\n\t};\n");
+
+		AutomataState acceptStates[] = table.getAcceptStates();
+		text.append("\n\tint finalEdges[").append(acceptStates.length).append("] = {");
+		boolean addComma = false;
+		for(AutomataState state : acceptStates) {
+			if(addComma)
+				text.append(", ");
+			else
+				addComma=true;
+			text.append(state.getID()-1);
+		}
+		text.append("};\n");
+
+		text.append("\tint result = validate(argv[1], edges);\n");
+		text.append("\tint i;\n");
+		text.append("\tfor(i = 0; i < ").append(acceptStates.length).append("; i++) {\n");
+		text.append("\t\tif(result == finalEdges[i]) {\n");
+		text.append("\t\t\tprintf(\"String matches the regular expression\\n\");\n");
+		text.append("\t\t\treturn 0;\n");
+		text.append("\t\t}\n");
+		text.append("\t}\n");
+		text.append("\tprintf(\"String doesn't match regular expression\\n\");\n");
+		text.append("\treturn 0;\n");
 		 
 		text.append("}\n");
 	}
