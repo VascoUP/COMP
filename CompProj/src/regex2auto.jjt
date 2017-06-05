@@ -63,7 +63,7 @@ TOKEN : {
 | 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
-| 	< POSITIVE_NUMBER: (["0" - "9"])+ >
+| 	< POSITIVE_NUMBER: ["1" - "9"](["0" - "9"])* >
 |  	< TERMINATE: "\n" >
 }
 
@@ -129,12 +129,12 @@ void CQT() : {}
 
 void CQT2() : { }
 {
-	< COMMA > PositiveNumber()
+	< COMMA > (Number() | PositiveNumber())
 }
 
 void CQT3() : {}
 {
-	PositiveNumber() (CQT4())?
+	(Number() | PositiveNumber()) (CQT4())?
 }
 
 void CQT4() : {} 
@@ -144,7 +144,7 @@ void CQT4() : {}
 
 void CQT5() : {}
 {
-	PositiveNumber()
+	(Number() | PositiveNumber())
 }
 
 

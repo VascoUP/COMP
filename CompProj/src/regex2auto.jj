@@ -67,7 +67,7 @@ TOKEN : {
 | 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
-| 	< POSITIVE_NUMBER: (["0" - "9"])+ >
+| 	< POSITIVE_NUMBER: "0" | (["1" - "9"](["0" - "9"])*) >
 |  	< TERMINATE: "\n" >
 }
 
@@ -383,7 +383,7 @@ void CQT2() : {/*@bgen(jjtree) CQT2 */
 {/*@bgen(jjtree) CQT2 */
         try {
 /*@egen*/
-	< COMMA > PositiveNumber()/*@bgen(jjtree)*/
+	< COMMA > (Number() | PositiveNumber())/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -414,7 +414,7 @@ void CQT3() : {/*@bgen(jjtree) CQT3 */
 {/*@bgen(jjtree) CQT3 */
         try {
 /*@egen*/
-	PositiveNumber() (CQT4())?/*@bgen(jjtree)*/
+	(Number() | PositiveNumber()) (CQT4())?/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -476,7 +476,7 @@ void CQT5() : {/*@bgen(jjtree) CQT5 */
 {/*@bgen(jjtree) CQT5 */
         try {
 /*@egen*/
-	PositiveNumber()/*@bgen(jjtree)*/
+	(Number() | PositiveNumber())/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
