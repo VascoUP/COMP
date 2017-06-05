@@ -318,6 +318,17 @@ public class DFAMinimizer {
      */
     private void getStateTransitions(AutomataTable dfa, List<SetTransitations> sets, Map<Integer, SetTransitations[]> elementTransitions, AutomataState state) {
         SetTransitations[] setTransitations = new SetTransitations[256];
+
+        Set<AutomataState> states = dfa.getStateGrammar().get(state).get(AutomataGrammar.anyInput);
+        if(states != null && states.size() == 1) {
+            AutomataState dst = states.iterator().next();
+            SetTransitations set;
+            if((set = getStateSet(sets, dst)) != null)
+                Arrays.fill(setTransitations, set);
+            elementTransitions.put(state.getID(), setTransitations);
+            return;
+        }
+
         Arrays.fill(setTransitations, null);
 
         for( Map.Entry<String, Set<AutomataState>> entry : dfa.getStateGrammar().get(state).entrySet() ) {
