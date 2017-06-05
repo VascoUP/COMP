@@ -67,7 +67,7 @@ TOKEN : {
 | 	< HYPHEN: "-" >
 | 	< LETTER: ["A" - "z"] >
 | 	< NUMBER: ["0" - "9"] >
-| 	< POSITIVE_NUMBER: "0" | (["1" - "9"](["0" - "9"])*) >
+| 	< POSITIVE_NUMBER: ["1" - "9"](["0" - "9"])* >
 |  	< TERMINATE: "\n" >
 }
 
